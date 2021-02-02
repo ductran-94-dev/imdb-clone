@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.footer`
+const List = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem 0;
 `;
 
-export default Wrapper;
+export default List;

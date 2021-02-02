@@ -16,4 +16,8 @@ export default defineMessages({
     id: `${scope}.features`,
     defaultMessage: 'Features',
   },
+  imdb: {
+    id: `${scope}.imdb`,
+    defaultMessage: 'IMDb',
+  },
 });

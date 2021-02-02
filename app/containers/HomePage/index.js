@@ -60,10 +60,12 @@ export function HomePage({
   return (
     <article>
       <Helmet>
-        <title>Home Page</title>
+        <title>
+          IMDb: Ratings, Reviews, and Where to Watch the Best Movies & TV Shows
+        </title>
         <meta
           name="description"
-          content="A React.js Boilerplate application homepage"
+          content="IMDb: Ratings, Reviews, and Where to Watch the Best Movies & TV Shows"
         />
       </Helmet>
       <div>

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.footer`
+const SocialList = styled.div`
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
 `;
 
-export default Wrapper;
+export default SocialList;
