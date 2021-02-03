@@ -5,15 +5,16 @@ import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Container } from 'react-bootstrap';
 
 import Wrapper from './Wrapper';
+import LogoLink from './LogoLink';
 import messages from './messages';
 
 function Header() {
   return (
     <Wrapper variant="dark">
       <Container>
-        <Navbar.Brand href="/">
+        <LogoLink href="/">
           <FormattedMessage {...messages.imdb} />
-        </Navbar.Brand>
+        </LogoLink>
         <Navbar.Collapse>
           <Nav>
             <Nav.Link href="/">Menu</Nav.Link>
