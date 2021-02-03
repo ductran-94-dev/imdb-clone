@@ -12,7 +12,7 @@ describe('<Header />', () => {
   const history = createMemoryHistory();
   const store = configureStore({}, history);
 
-  it('should render a div', () => {
+  it('should render a nav', () => {
     const { container } = render(
       <Provider store={store}>
         <IntlProvider locale="en">
