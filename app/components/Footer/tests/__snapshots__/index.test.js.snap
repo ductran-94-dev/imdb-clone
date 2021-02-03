@@ -2,48 +2,209 @@
 
 exports[`<Footer /> should render and match the snapshot 1`] = `
 <footer
-  className="Wrapper-wcfdfo-0 dPvBog"
+  className="Wrapper-wcfdfo-0 bZvgwE"
 >
-  <section>
-    <span>
-      This project is licensed under the MIT license.
-    </span>
-  </section>
-  <section>
+  <div
+    className="InnerContainer-sc-1oamtot-0 kkGRTG"
+  >
     <div
-      className="Wrapper-xnjoq9-0 dNmQIR"
+      className="FooterLinks-sc-480whj-0 cEnGsE"
     >
-      <select
-        className="Select-sc-1sm01tk-0 wIjFa"
-        onChange={[Function]}
-        value="en"
+      <div
+        className="Wrapper-sc-86rpyn-0 ffPswK"
       >
-        <option
-          value="en"
+        <a
+          className="SocialLink-v62gqj-0 ghfzTE"
+          href="/"
         >
-          en
-        </option>
-        <option
-          value="de"
+          Facebook
+        </a>
+        <a
+          className="SocialLink-v62gqj-0 ghfzTE"
+          href="/"
         >
-          de
-        </option>
-      </select>
+          Instagram
+        </a>
+        <a
+          className="SocialLink-v62gqj-0 ghfzTE"
+          href="/"
+        >
+          Anonymous
+        </a>
+        <a
+          className="SocialLink-v62gqj-0 ghfzTE"
+          href="/"
+        >
+          Twitter
+        </a>
+        <a
+          className="SocialLink-v62gqj-0 ghfzTE"
+          href="/"
+        >
+          Youtube
+        </a>
+      </div>
+      <ul
+        className="FooterNav-sc-15x8j48-0 dDisaP"
+      >
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Get the IMDb App
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Help
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Site Index
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              IMDbPro
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Box Office Mojo
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              IMDb Developer
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Press Room
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Advertising
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Jobs
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Conditions of Use
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Privacy Policy
+            </span>
+          </a>
+        </li>
+        <li
+          className="FooterItem-sc-1c6w7y7-0 jURWOB"
+        >
+          <a
+            className="FooterLink-sc-1gbpsk1-0 jCHfhD"
+            href="."
+          >
+            <span>
+              Interest-Based Ads
+            </span>
+          </a>
+        </li>
+      </ul>
     </div>
-  </section>
-  <section>
-    <span>
-      
-      Made with love by 
-      <a
-        className="A-br8h0y-0 dwVNvo"
-        href="https://twitter.com/mxstbr"
-      >
-        Max Stoiber
-      </a>
-      .
-    
-    </span>
-  </section>
+    <div
+      className="FooterLogo-ejxje-0 cMqePI"
+    >
+      an amazon company
+    </div>
+    <p
+      className="Copyright-t9gbre-0 kWrhgJ"
+    >
+      <span>
+        This project is licensed under the MIT license.
+      </span>
+    </p>
+  </div>
 </footer>
 `;

@@ -7,11 +7,13 @@ import messages from './messages';
 
 function Header() {
   return (
-    <Wrapper>
-      <LogoLink href="/">
-        <FormattedMessage {...messages.imdb} />
-      </LogoLink>
-    </Wrapper>
+    <div>
+      <Wrapper>
+        <LogoLink href="/">
+          <FormattedMessage {...messages.imdb} />
+        </LogoLink>
+      </Wrapper>
+    </div>
   );
 }
 

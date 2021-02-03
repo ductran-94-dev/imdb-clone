@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const InnerContainer = styled.div`
+const Inner = styled.div`
   max-width: 1024px;
 `;
 
-export default InnerContainer;
+export default Inner;

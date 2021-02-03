@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const SocialItem = styled.a`
+const SocialLink = styled.a`
   color: inherit;
   padding: 0.5rem;
+  text-decoration: none;
 `;
 
-export default SocialItem;
+export default SocialLink;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const SocialList = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-export default SocialList;
+export default Wrapper;
