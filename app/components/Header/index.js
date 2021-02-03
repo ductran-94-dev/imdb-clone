@@ -1,8 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { NavLink } from 'react-router-dom';
 
 import { Navbar, Nav, Form, FormControl, Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 
 import Wrapper from './Wrapper';
 import messages from './messages';
