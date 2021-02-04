@@ -10,7 +10,7 @@ import messages from './messages';
 
 function Header() {
   return (
-    <Wrapper variant="dark">
+    <Wrapper variant="dark" expand="sm">
       <Container>
         <LogoLink href="/">
           <FormattedMessage {...messages.imdb} />
