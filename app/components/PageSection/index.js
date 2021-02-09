@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Wrapper from './Wrapper';
 import Heading from './Heading';
@@ -22,7 +23,11 @@ function PageSection({ children, title, seeAllLink }) {
             : { href: seeAllLink })}
         >
           {title}
-          {seeAllLink && <span>...</span>}{' '}
+          {seeAllLink && (
+            <span>
+              <FontAwesomeIcon icon="chevron-right" />
+            </span>
+          )}{' '}
         </Title>
       </Heading>
       {children}{' '}

@@ -9,6 +9,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
+import initIcon from 'utils/initIcon';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
@@ -19,6 +20,8 @@ import Footer from 'components/Footer';
 import Wrapper from './Wrapper';
 
 import GlobalStyle from '../../global-styles';
+
+initIcon.init();
 
 export default function App() {
   return (

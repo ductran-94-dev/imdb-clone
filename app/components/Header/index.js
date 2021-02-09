@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Navbar, Nav, Form, FormControl, Container } from 'react-bootstrap';
 
@@ -10,14 +11,17 @@ import messages from './messages';
 
 function Header() {
   return (
-    <Wrapper variant="dark" expand="sm">
+    <Wrapper variant="dark" expand="md">
       <Container>
         <LogoLink href="/">
           <FormattedMessage {...messages.imdb} />
         </LogoLink>
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link href="/">Menu</Nav.Link>
+            <Nav.Link href="/">
+              <FontAwesomeIcon icon="bars" />
+              {' Menu'}
+            </Nav.Link>
           </Nav>
           <Form
             className="px-5"
@@ -34,13 +38,15 @@ function Header() {
           </Form>
           <Nav className="ml-auto">
             <Nav.Link to="/imdb_pro" as={NavLink}>
-              IMDbPro
+              <strong>IMDbPro</strong>
             </Nav.Link>
             <Nav.Link to="/watchlist" as={NavLink}>
-              Watchlist
+              <FontAwesomeIcon icon="calendar-plus" />
+              {' Watchlist'}
             </Nav.Link>
             <Nav.Link to="/sign_in" as={NavLink}>
-              Sign In
+              <FontAwesomeIcon icon="user-ninja" />
+              {' Sign In'}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
