@@ -6,7 +6,6 @@ const Title = styled.a`
   padding: 0;
   padding-left: 0.75rem;
 
-  color: #ffffff;
   font-weight: 700;
   font-size: 1.5rem;
   text-decoration: none;
@@ -19,7 +18,7 @@ const Title = styled.a`
     height: 100%;
     width: 4px;
 
-    background: #f5c518;
+    background: var(--color-primary);
     border-radius: 4px;
   }
 
@@ -28,11 +27,10 @@ const Title = styled.a`
   }
 
   &:hover {
-    color: #ffffff;
     text-decoration: none;
 
     span {
-      color: #f5c518;
+      color: var(--color-primary);
     }
   }
 `;

@@ -1,6 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --color-primary: ${props => props.theme.colors.main};
+    --color-primary-dark: ${props => props.theme.colors.dark};
+    --color-primary-darker: ${props => props.theme.colors.darker};
+    --color-primary-light: ${props => props.theme.colors.light};
+    --color-primary-lighter: ${props => props.theme.colors.lighter};
+    --text-color: ${props => props.theme.colors.text};
+    --link-color: ${props => props.theme.colors.link};
+    --link-hover-color: ${props => props.theme.colors.linkHover};
+    --border-color: rgba(176, 190, 197, 0.5);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --shadow-color-dark: rgba(0, 0, 0, 0.25);
+  }
+
   html,
   body {
     height: 100%;
@@ -17,8 +31,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--color-primary-darker);
+    color: var(--text-color);
     min-height: 100%;
     min-width: 100%;
   }
@@ -36,6 +50,14 @@ const GlobalStyle = createGlobalStyle`
 
     vertical-align: middle;
     fill: currentColor;
+  }
+
+  a {
+    color: var(--link-color);
+    
+    &:hover {
+      color: var(--link-hover-color);
+    }
   }
 `;
 

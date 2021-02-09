@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Title = styled.h3`
   padding: 2rem;
 
-  color: #f5c518;
+  color: var(--color-primary);
   font-weight: 700;
   font-size: 2rem;
 `;
