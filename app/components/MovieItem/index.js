@@ -17,8 +17,7 @@ function MovieItem({ item }) {
   return (
     <Wrapper>
       <img src={source} alt={item.title} className="w-100 rounded" />
-      <h6 className="text-center font-weight-bold">{item.original_title}</h6>
-      <p className="text-center">Vote {item.vote_count}</p>
+      <h6 className="text-center py-3">{item.original_title}</h6>
     </Wrapper>
   );
 }

@@ -19,12 +19,8 @@ import { makeSelectUsername } from 'containers/HomePage/selectors';
  * Github repos request/response handler
  */
 export function* getRepos() {
-  // Select username from store
   const username = yield select(makeSelectUsername());
   const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
-
-  // eslint-disable-next-line no-console
-  console.log('username', username);
 
   try {
     // Call our request helper (see 'utils/request')
@@ -40,6 +36,7 @@ export function* getPopularMovies() {
 
   try {
     const { results, page } = yield call(request, requestURL);
+
     yield put(popularMoviesLoaded(results, page));
   } catch (err) {
     yield put(popularMoviesError(err));

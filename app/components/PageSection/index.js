@@ -12,18 +12,20 @@ import Wrapper from './Wrapper';
 import Heading from './Heading';
 import Title from './Title';
 
-function PageSection({ children, title, moreLink }) {
+function PageSection({ children, title, seeAllLink }) {
   return (
     <Wrapper>
       <Heading hidden={!title.length}>
         <Title
-          {...(moreLink ? { as: Link, to: moreLink } : { href: moreLink })}
+          {...(seeAllLink
+            ? { as: Link, to: seeAllLink }
+            : { href: seeAllLink })}
         >
           {title}
-          {moreLink && <span>...</span>}
+          {seeAllLink && <span>...</span>}{' '}
         </Title>
       </Heading>
-      {children}
+      {children}{' '}
     </Wrapper>
   );
 }
@@ -31,7 +33,7 @@ function PageSection({ children, title, moreLink }) {
 PageSection.propTypes = {
   title: PropTypes.string,
   children: PropTypes.element,
-  moreLink: PropTypes.string,
+  seeAllLink: PropTypes.string,
 };
 
 export default PageSection;

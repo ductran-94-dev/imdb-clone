@@ -35,7 +35,7 @@ function MoviesList({ loading, error, movies }) {
       <Wrapper>
         <Ul>
           {movies
-            .filter((_, index) => index < 8)
+            .filter((_, index) => index < 6)
             .map(movie => (
               <MovieItem key={`item-${movie.id}`} item={movie} />
             ))}

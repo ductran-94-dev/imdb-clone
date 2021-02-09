@@ -88,7 +88,7 @@ export function HomePage({
           </PageSection>
         </PageGroup>
         <PageGroup title="More to explore">
-          <PageSection title="Editors’ picks" moreLink="/editors_picks">
+          <PageSection title="Editors’ picks" seeAllLink="/editors_picks">
             <MoviesList {...moviesListProps} />
           </PageSection>
           <PageSection title="Born today">
