@@ -8,21 +8,38 @@
  */
 
 import produce from 'immer';
+import { SUCCESS } from 'utils/constants';
+import { CHANGE_USERNAME, AMOUNT_ROW_ITEMS } from './constants';
 import {
-  CHANGE_USERNAME,
-  LOAD_POPULAR_MOVIES,
-  LOAD_POPULAR_MOVIES_SUCCESS,
-  LOAD_POPULAR_MOVIES_ERROR,
-} from './constants';
+  UPCOMING_MOVIES,
+  POPULAR_MOVIES,
+  FEATURED_TODAY,
+  TOP_PICKS,
+  WATCHLIST,
+  FAN_FAVOURITES,
+  MOVE_TO_WATCH,
+  IMDB_ORIGINALS,
+  EDITORS_PICKS,
+  BORN_TODAY,
+  TOP_NEWS,
+  RECENTLY_VIEWED,
+} from './actions';
 
 // The initial state of the App
 export const initialState = {
   username: '',
-  popularMovies: {
-    results: false,
-    loading: false,
-    error: false,
-  },
+  featuredToday: {},
+  topPicks: {},
+  watchlist: {},
+  fanFavourites: {},
+  moveToWatch: {},
+  imdbOriginals: {},
+  editorsPicks: {},
+  bornToday: {},
+  topNews: {},
+  recentlyViewed: {},
+  upcomingMovies: {},
+  popularMovies: {},
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -34,22 +51,117 @@ const homeReducer = (state = initialState, action) =>
         draft.username = action.username.replace(/@/gi, '');
         break;
 
-      case LOAD_POPULAR_MOVIES:
-        draft.popularMovies.loading = true;
-        draft.popularMovies.error = false;
-        draft.popularMovies.results = false;
+      case UPCOMING_MOVIES[SUCCESS]:
+        reduceFetchUpcomingMovies(action.response, draft);
         break;
 
-      case LOAD_POPULAR_MOVIES_SUCCESS:
-        draft.popularMovies.results = action.movies;
-        draft.popularMovies.loading = false;
+      case POPULAR_MOVIES[SUCCESS]:
+        reduceFetchPopularMovies(action.response, draft);
         break;
 
-      case LOAD_POPULAR_MOVIES_ERROR:
-        draft.popularMovies.error = action.error;
-        draft.popularMovies.loading = false;
+      case FEATURED_TODAY[SUCCESS]:
+        reduceFetchFeaturedToday(action.response, draft);
+        break;
+
+      case TOP_PICKS[SUCCESS]:
+        reduceFetchTopPicks(action.response, draft);
+        break;
+
+      case WATCHLIST[SUCCESS]:
+        reduceFetchWatchlist(action.response, draft);
+        break;
+
+      case FAN_FAVOURITES[SUCCESS]:
+        reduceFetchFanFavourites(action.response, draft);
+        break;
+
+      case MOVE_TO_WATCH[SUCCESS]:
+        reduceFetchMoveToWatch(action.response, draft);
+        break;
+
+      case IMDB_ORIGINALS[SUCCESS]:
+        reduceFetchImdbOriginals(action.response, draft);
+        break;
+
+      case EDITORS_PICKS[SUCCESS]:
+        reduceFetchEditorsPicks(action.response, draft);
+        break;
+
+      case BORN_TODAY[SUCCESS]:
+        reduceFetchBornToday(action.response, draft);
+        break;
+
+      case TOP_NEWS[SUCCESS]:
+        reduceFetchTopNews(action.response, draft);
+        break;
+
+      case RECENTLY_VIEWED[SUCCESS]:
+        reduceFetchRecentlyViewed(action.response, draft);
         break;
     }
   });
 
 export default homeReducer;
+
+function reduceFetchUpcomingMovies(response, draft) {
+  draft.upcomingMovies = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+
+function reduceFetchPopularMovies(response, draft) {
+  draft.popularMovies = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+
+function reduceFetchFeaturedToday(response, draft) {
+  draft.featuredToday = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchTopPicks(response, draft) {
+  draft.topPicks = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchWatchlist(response, draft) {
+  draft.watchlist = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchFanFavourites(response, draft) {
+  draft.fanFavourites = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchMoveToWatch(response, draft) {
+  draft.moveToWatch = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchImdbOriginals(response, draft) {
+  draft.imdbOriginals = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchEditorsPicks(response, draft) {
+  draft.editorsPicks = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchBornToday(response, draft) {
+  draft.bornToday = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchTopNews(response, draft) {
+  draft.topNews = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+  };
+}
+function reduceFetchRecentlyViewed(response, draft) {
+  draft.recentlyViewed = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS - 3),
+  };
+}

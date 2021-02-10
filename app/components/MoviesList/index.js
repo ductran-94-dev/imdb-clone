@@ -30,15 +30,13 @@ function MoviesList({ loading, error, movies }) {
     );
   }
 
-  if (movies !== false) {
+  if (!!movies && movies !== false) {
     return (
       <Wrapper>
         <Ul>
-          {movies
-            .filter((_, index) => index < 6)
-            .map(movie => (
-              <MovieItem key={`item-${movie.id}`} item={movie} />
-            ))}
+          {movies.map(movie => (
+            <MovieItem key={`item-${movie.id}`} item={movie} />
+          ))}
         </Ul>
       </Wrapper>
     );

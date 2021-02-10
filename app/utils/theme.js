@@ -1,6 +1,7 @@
 const theme = {
   colors: {
-    main: '#e50914', // main: '#f5c518',
+    // main: '#e50914',
+    main: '#f5c518',
     dark: '#141414',
     darker: '#000000',
     light: '#546e7a',

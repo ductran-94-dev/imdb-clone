@@ -8,8 +8,6 @@ const Wrapper = styled.section`
   padding: 0rem 2rem;
   margin: 0;
 
-  background-color: #141414;
-
   & + section {
     margin-top: 1rem;
   }

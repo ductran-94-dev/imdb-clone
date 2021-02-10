@@ -11,7 +11,4 @@
  */
 
 export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
-
-export const LOAD_POPULAR_MOVIES = 'boilerplate/Home/LOAD_POPULAR_MOVIES';
-export const LOAD_POPULAR_MOVIES_SUCCESS = 'boilerplate/Home/LOAD_POPULAR_MOVIES_SUCCESS';
-export const LOAD_POPULAR_MOVIES_ERROR = 'boilerplate/Home/LOAD_POPULAR_MOVIES_ERROR';
+export const AMOUNT_ROW_ITEMS = '6';

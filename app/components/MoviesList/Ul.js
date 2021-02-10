@@ -2,12 +2,9 @@ import styled from 'styled-components';
 
 const Ul = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 12rem));
-  justify-content: space-between;
-  align-content: space-between;
-  align-items: start;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   padding: 0rem 0;
-  grid-gap: 0rem 0rem;
+  grid-gap: 12px 12px;
   margin: 0;
 `;
 
