@@ -14,9 +14,9 @@ import Heading from './Heading';
 import Title from './Title';
 import Subtitle from './Subtitle';
 
-function PageSection({ children, title, subtitle, seeAllLink }) {
+function PageSection({ children, title, subtitle, seeAllLink, hidden }) {
   return (
-    <Wrapper>
+    <Wrapper hidden={hidden}>
       <Heading hidden={!title}>
         <Title
           {...(seeAllLink
@@ -40,8 +40,9 @@ function PageSection({ children, title, subtitle, seeAllLink }) {
 PageSection.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.node,
   seeAllLink: PropTypes.string,
+  hidden: PropTypes.bool,
 };
 
 export default PageSection;

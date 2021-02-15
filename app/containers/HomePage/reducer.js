@@ -8,8 +8,8 @@
  */
 
 import produce from 'immer';
-import { SUCCESS } from 'utils/constants';
-import { CHANGE_USERNAME, AMOUNT_ROW_ITEMS } from './constants';
+import { SUCCESS, AMOUNT_ROW_ITEMS } from 'utils/constants';
+import { CHANGE_USERNAME } from './constants';
 import {
   UPCOMING_MOVIES,
   POPULAR_MOVIES,

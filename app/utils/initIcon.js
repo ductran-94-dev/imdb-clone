@@ -5,11 +5,25 @@ import {
   faCalendarPlus,
   faBars,
   faUserNinja,
+  faStar,
+  faImages,
+  faPlayCircle,
+  faChartLine,
 } from '@fortawesome/free-solid-svg-icons';
 // import { far } from '@fortawesome/free-regular-svg-icons';
 
 export default {
   init() {
-    library.add(fab, faChevronRight, faCalendarPlus, faBars, faUserNinja);
+    library.add(
+      fab,
+      faChevronRight,
+      faCalendarPlus,
+      faBars,
+      faUserNinja,
+      faStar,
+      faImages,
+      faPlayCircle,
+      faChartLine,
+    );
   },
 };

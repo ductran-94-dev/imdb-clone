@@ -4,294 +4,199 @@
  *
  */
 
+import Box from 'components/Box';
 import MoviesList from 'components/MoviesList';
 import PageGroup from 'components/PageGroup';
 import PageSection from 'components/PageSection';
+import RelatedNews from 'components/RelatedNews';
+import TitleCast from 'components/TitleCast';
+import TitleDetails from 'components/TitleDetails';
+import TitleHero from 'components/TitleHero';
+import TitleMetaData from 'components/TitleMetaData';
+import TitlePhotos from 'components/TitlePhotos';
+import TitleReviews from 'components/TitleReviews';
+import TitleSimilar from 'components/TitleSimilar';
+import TitleStoryline from 'components/TitleStoryline';
+import TitleVideos from 'components/TitleVideos';
+import * as appActions from 'containers/App/actions';
+import * as appSelectors from 'containers/App/selectors';
 import PropTypes from 'prop-types';
 import React, { memo, useEffect } from 'react';
+import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { Col, Container, Row, Button, ListGroup } from 'react-bootstrap';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-
-import * as appSelectors from 'containers/App/selectors';
-import * as appActions from 'containers/App/actions';
-
-import Box from 'components/Box';
-
+import { getYearAtReleaseDate } from 'services/date';
+import * as titleActions from './actions';
 import reducer from './reducer';
 import saga from './saga';
+import * as titleSelectors from './selectors';
 
-export function TitlePage({ recentlyViewed, onLoadRecentlyViewed }) {
+export function TitlePage({
+  titleDetails,
+  titlePhotos,
+  titleVideos,
+  titleCast,
+  titleSimilar,
+  titleReviews,
+  recentlyViewed,
+  onLoadTitleDetails,
+  onLoadTitlePhotos,
+  onLoadTitleVideos,
+  onLoadTitleCast,
+  onLoadTitleSimilar,
+  onLoadTitleReviews,
+  onLoadRecentlyViewed,
+}) {
   useInjectReducer({ key: 'titlePage', reducer });
   useInjectSaga({ key: 'titlePage', saga });
 
   useEffect(() => {
     onLoadRecentlyViewed();
+    onLoadTitleDetails();
+    onLoadTitlePhotos();
+    onLoadTitleVideos();
+    onLoadTitleCast();
+    onLoadTitleSimilar();
+    onLoadTitleReviews();
   }, []);
+
+  if (!titleDetails) return null;
+
+  const titleYear = getYearAtReleaseDate(titleDetails.release_date);
 
   return (
     <div>
       <Helmet>
-        <title>If I Stay 2014</title>
+        <title>
+          {titleDetails.title} ({titleYear})
+        </title>
         <meta name="description" content="Description of TitlePage" />
       </Helmet>
       <Container>
         <div>
-          <div className="py-4">
-            <Row>
-              <Col sm={8}>
-                <h1>If I Stay (2014)</h1>
-                <p>2014 . PG-13 . 1h24m</p>
-              </Col>
-              <Col sm={4}>
-                <Box />
-              </Col>
-            </Row>
-          </div>
-          <div>
-            <Row>
-              <Col sm={3}>
-                <Box />
-              </Col>
-              <Col sm={6}>
-                <Box />
-              </Col>
-              <Col sm={3}>
-                <Box />
-                <Box />
-              </Col>
-            </Row>
-          </div>
-          <div>
-            <Row>
-              <Col sm={8}>
-                <p>
-                  <Button
-                    variant="outline-light"
-                    size="sm"
-                    style={{
-                      borderRadius: 20,
-                      marginRight: '0.5rem',
-                      borderWidth: 2,
-                    }}
-                  >
-                    Drama
-                  </Button>
-                  <Button
-                    variant="outline-light"
-                    size="sm"
-                    style={{
-                      borderRadius: 20,
-                      marginRight: '0.5rem',
-                      borderWidth: 2,
-                    }}
-                  >
-                    Fantasy
-                  </Button>
-                  <Button
-                    variant="outline-light"
-                    size="sm"
-                    style={{
-                      borderRadius: 20,
-                      marginRight: '0.5rem',
-                      borderWidth: 2,
-                    }}
-                  >
-                    Music
-                  </Button>
-                </p>
-                <p>
-                  Life changes in an instant for young Mia Hall after a car
-                  accident puts her in a coma. During an out-of-body experience,
-                  she must decide whether to wake up and live a life far
-                  different than she had imagined. The choice is hers if she can
-                  go on.
-                </p>
-                <ListGroup variant="flush">
-                  <ListGroup.Item variant="dark">Director</ListGroup.Item>
-                  <ListGroup.Item variant="dark">Writers</ListGroup.Item>
-                  <ListGroup.Item variant="dark">Stars</ListGroup.Item>
-                  <ListGroup.Item variant="dark">IMDbPro</ListGroup.Item>
-                </ListGroup>
-              </Col>
-              <Col sm={4}>
-                <Box />
-              </Col>
-            </Row>
-          </div>
-          <div>
-            <Row>
-              <Col sm={8}>
-                <PageGroup>
-                  <PageSection title="Videos" seeAllLink="/">
-                    <Row>
-                      <Col sm={6}>
-                        <Box />
-                      </Col>
-                      <Col sm={6}>
-                        <Box />
-                      </Col>
-                    </Row>
-                  </PageSection>
-                  <PageSection title="Photos" seeAllLink="/">
-                    <Row>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                    </Row>
-                  </PageSection>
-                  <PageSection
-                    title="Casts"
-                    subtitle="Cast overview, first billed only"
-                    seeAllLink="/"
-                  >
-                    <Row>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                      <Col sm={6} className="mb-4">
-                        <Box />
-                      </Col>
-                    </Row>
-                  </PageSection>
-                  <PageSection title="More like this" seeAllLink="/">
-                    <Row>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                      <Col sm={3}>
-                        <Box />
-                      </Col>
-                    </Row>
-                  </PageSection>
-                  <PageSection title="Storyline" seeAllLink="/">
-                    <Box />
-                  </PageSection>
-                  <PageSection title="Did you know" seeAllLink="/">
-                    <Box />
-                  </PageSection>
-                  <PageSection title="User reviews" seeAllLink="/">
-                    <Box />
-                  </PageSection>
-                  <PageSection title="FQA" seeAllLink="/">
-                    <Box />
-                  </PageSection>
-                  <PageSection title="Details" seeAllLink="/">
-                    <ListGroup variant="flush">
-                      <ListGroup.Item variant="dark">
-                        Release date
-                      </ListGroup.Item>
-                      <ListGroup.Item variant="dark">
-                        Country of origin
-                      </ListGroup.Item>
-                      <ListGroup.Item variant="dark">
-                        Offical sites
-                      </ListGroup.Item>
-                      <ListGroup.Item variant="dark">Languague</ListGroup.Item>
-                      <ListGroup.Item variant="dark">
-                        Also known as
-                      </ListGroup.Item>
-                      <ListGroup.Item variant="dark">
-                        Filming locations
-                      </ListGroup.Item>
-                      <ListGroup.Item variant="dark">
-                        Production companies
-                      </ListGroup.Item>
-                      <ListGroup.Item variant="dark">
-                        See more company credits at IMDbPro
-                      </ListGroup.Item>
-                    </ListGroup>
-                  </PageSection>
-                  <PageSection title="Box office" seeAllLink="/">
-                    <Box />
-                  </PageSection>
-                  <PageSection title="Technical Specs" seeAllLink="/">
-                    <Box />
-                  </PageSection>
-                  <PageSection title="Related news" seeAllLink="/">
-                    <Row>
-                      <Col sm={6}>
-                        <Box />
-                      </Col>
-                      <Col sm={6}>
-                        <Box />
-                      </Col>
-                    </Row>
-                  </PageSection>
-                </PageGroup>
-              </Col>
-              <Col sm={4}>
-                <PageGroup title="More to explore">
-                  <PageSection title="">
-                    <Box />
-                  </PageSection>
-                  <PageSection
-                    title="User lists"
-                    subtitle="Related lists from IMDb users"
-                    seeAllLink="/"
-                  >
-                    <Box />
-                  </PageSection>
-                  <PageSection
-                    title="User polls"
-                    subtitle="Related poll from IMDb users"
-                    seeAllLink="/"
-                  >
-                    <Box />
-                  </PageSection>
-                </PageGroup>
-              </Col>
-            </Row>
-          </div>
+          <TitleMetaData titleDetails={titleDetails} />
+          <TitleHero titleDetails={titleDetails} />
+          <Row>
+            <Col sm={8}>
+              <p>
+                <Button
+                  variant="outline-light"
+                  size="sm"
+                  style={{
+                    borderRadius: 20,
+                    marginRight: '0.5rem',
+                    borderWidth: 2,
+                  }}
+                >
+                  Drama
+                </Button>
+                <Button
+                  variant="outline-light"
+                  size="sm"
+                  style={{
+                    borderRadius: 20,
+                    marginRight: '0.5rem',
+                    borderWidth: 2,
+                  }}
+                >
+                  Fantasy
+                </Button>
+                <Button
+                  variant="outline-light"
+                  size="sm"
+                  style={{
+                    borderRadius: 20,
+                    marginRight: '0.5rem',
+                    borderWidth: 2,
+                  }}
+                >
+                  Music
+                </Button>
+              </p>
+              <p>{titleDetails.overview}</p>
+              <ListGroup variant="flush">
+                <ListGroup.Item variant="dark">Director</ListGroup.Item>
+                <ListGroup.Item variant="dark">Writers</ListGroup.Item>
+                <ListGroup.Item variant="dark">Stars</ListGroup.Item>
+                <ListGroup.Item variant="dark">IMDbPro</ListGroup.Item>
+              </ListGroup>
+            </Col>
+            <Col sm={4}>
+              <Box />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <PageGroup>
+                <PageSection hidden title="Videos" seeAllLink="/">
+                  <TitleVideos titleVideos={titleVideos} />
+                </PageSection>
+                <PageSection hidden title="Photos" seeAllLink="/">
+                  <TitlePhotos titlePhotos={titlePhotos} />
+                </PageSection>
+                <PageSection
+                  title="Cast"
+                  subtitle="Cast overview, first billed only"
+                  seeAllLink="/"
+                  hidden
+                >
+                  <TitleCast titleCast={titleCast} />
+                </PageSection>
+                <PageSection hidden title="More like this" seeAllLink="/">
+                  <TitleSimilar titleSimilar={titleSimilar} />
+                </PageSection>
+                <PageSection hidden title="Storyline" seeAllLink="/">
+                  <TitleStoryline titleDetails={titleDetails} />
+                </PageSection>
+                <PageSection title="Did you know" seeAllLink="/">
+                  <Box />
+                </PageSection>
+                <PageSection hidden title="User reviews" seeAllLink="/">
+                  <TitleReviews titleReviews={titleReviews} />
+                </PageSection>
+                <PageSection title="FQA" seeAllLink="/">
+                  <Box />
+                </PageSection>
+                <PageSection hidden title="Details" seeAllLink="/">
+                  <TitleDetails titleDetails={titleDetails} />
+                </PageSection>
+                <PageSection title="Box office" seeAllLink="/">
+                  <Box />
+                </PageSection>
+                <PageSection title="Technical Specs" seeAllLink="/">
+                  <Box />
+                </PageSection>
+                <PageSection hidden title="Related news" seeAllLink="/">
+                  <RelatedNews />
+                </PageSection>
+              </PageGroup>
+            </Col>
+            <Col sm={4}>
+              <PageGroup title="More to explore">
+                <PageSection title="">
+                  <Box />
+                </PageSection>
+                <PageSection
+                  title="User lists"
+                  subtitle="Related lists from IMDb users"
+                  seeAllLink="/"
+                >
+                  <Box />
+                </PageSection>
+                <PageSection
+                  title="User polls"
+                  subtitle="Related poll from IMDb users"
+                  seeAllLink="/"
+                >
+                  <Box />
+                </PageSection>
+              </PageGroup>
+            </Col>
+          </Row>
         </div>
         <PageGroup title="">
           <PageSection title="Recently viewed">
@@ -310,19 +215,49 @@ export function TitlePage({ recentlyViewed, onLoadRecentlyViewed }) {
 }
 
 TitlePage.propTypes = {
+  titleDetails: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  titlePhotos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  titleVideos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  titleCast: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  titleSimilar: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  titleReviews: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   recentlyViewed: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  onLoadTitleDetails: PropTypes.func,
+  onLoadTitlePhotos: PropTypes.func,
+  onLoadTitleVideos: PropTypes.func,
+  onLoadTitleCast: PropTypes.func,
+  onLoadTitleSimilar: PropTypes.func,
+  onLoadTitleReviews: PropTypes.func,
   onLoadRecentlyViewed: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
+  titleDetails: titleSelectors.makeSelectMovieDetails(),
+  titlePhotos: titleSelectors.makeSelectMoviePhotos(),
+  titleVideos: titleSelectors.makeSelectMovieVideos(),
+  titleCast: titleSelectors.makeSelectMovieCast(),
+  titleSimilar: titleSelectors.makeSelectMovieSimilar(),
+  titleReviews: titleSelectors.makeSelectMovieReviews(),
   recentlyViewed: appSelectors.makeSelectRecentlyViewed(),
 });
 
 function mapDispatchToProps(dispatch) {
+  const onLoadTitleDetails = titleActions.movieDetails.request;
+  const onLoadTitlePhotos = titleActions.moviePhotos.request;
+  const onLoadTitleVideos = titleActions.movieVideos.request;
+  const onLoadTitleCast = titleActions.movieCast.request;
+  const onLoadTitleSimilar = titleActions.movieSimilar.request;
+  const onLoadTitleReviews = titleActions.movieReviews.request;
   const onLoadRecentlyViewed = appActions.recentlyViewed.request;
 
   return bindActionCreators(
     {
+      onLoadTitleDetails,
+      onLoadTitlePhotos,
+      onLoadTitleVideos,
+      onLoadTitleCast,
+      onLoadTitleSimilar,
+      onLoadTitleReviews,
       onLoadRecentlyViewed,
     },
     dispatch,

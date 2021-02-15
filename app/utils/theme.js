@@ -8,7 +8,7 @@ const theme = {
     lighter: '#b0bec5',
     text: '#fafafa',
     link: '#fafafa',
-    linkHover: '#d8d8d8',
+    linkHover: 'rgba(255, 255, 255, 0.7)',
   },
   size: {
     smallest: '25em', // 275px
