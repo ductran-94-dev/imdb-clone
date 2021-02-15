@@ -5,7 +5,7 @@ const Wrapper = styled.section`
   flex-direction: column;
 
   width: 100%;
-  padding: 0rem 2rem;
+  padding: 0rem 0rem;
   margin: 0;
 
   & + section {

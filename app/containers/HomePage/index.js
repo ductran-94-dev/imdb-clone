@@ -4,9 +4,6 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import MoviesList from 'components/MoviesList';
-import PageGroup from 'components/PageGroup';
-import PageSection from 'components/PageSection';
 import PropTypes from 'prop-types';
 import React, { memo, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
@@ -15,6 +12,14 @@ import { bindActionCreators, compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
+
+import * as appActions from 'containers/App/actions';
+import * as appSelectors from 'containers/App/selectors';
+
+import { Container } from 'react-bootstrap';
+import MoviesList from 'components/MoviesList';
+import PageGroup from 'components/PageGroup';
+import PageSection from 'components/PageSection';
 
 import * as homeActions from './actions';
 import * as homeSelectors from './selectors';
@@ -76,7 +81,7 @@ export function HomePage({
           content="A React.js Boilerplate application homepage"
         />
       </Helmet>
-      <div>
+      <Container>
         <PageGroup title="Featured today">
           <PageSection title="">
             <MoviesList
@@ -195,7 +200,7 @@ export function HomePage({
             />
           </PageSection>
         </PageGroup>
-      </div>
+      </Container>
     </article>
   );
 }
@@ -239,7 +244,7 @@ const mapStateToProps = createStructuredSelector({
   editorsPicks: homeSelectors.makeSelectEditorsPicks(),
   bornToday: homeSelectors.makeSelectBornToday(),
   topNews: homeSelectors.makeSelectTopNews(),
-  recentlyViewed: homeSelectors.makeSelectRecentlyViewed(),
+  recentlyViewed: appSelectors.makeSelectRecentlyViewed(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -254,7 +259,7 @@ export function mapDispatchToProps(dispatch) {
   const onLoadEditorsPicks = homeActions.editorsPicks.request;
   const onLoadBornToday = homeActions.bornToday.request;
   const onLoadTopNews = homeActions.topNews.request;
-  const onLoadRecentlyViewed = homeActions.recentlyViewed.request;
+  const onLoadRecentlyViewed = appActions.recentlyViewed.request;
 
   return bindActionCreators(
     {

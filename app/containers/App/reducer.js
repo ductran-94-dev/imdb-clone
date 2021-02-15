@@ -8,6 +8,8 @@
  */
 
 import produce from 'immer';
+import { AMOUNT_ROW_ITEMS, SUCCESS } from 'utils/constants';
+import { RECENTLY_VIEWED } from './actions';
 import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
 
 // The initial state of the App
@@ -18,6 +20,7 @@ export const initialState = {
   userData: {
     repositories: false,
   },
+  recentlyViewed: {},
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -40,7 +43,17 @@ const appReducer = (state = initialState, action) =>
         draft.error = action.error;
         draft.loading = false;
         break;
+
+      case RECENTLY_VIEWED[SUCCESS]:
+        reduceFetchRecentlyViewed(action.response, draft);
+        break;
     }
   });
 
 export default appReducer;
+
+function reduceFetchRecentlyViewed(response, draft) {
+  draft.recentlyViewed = {
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS - 3),
+  };
+}

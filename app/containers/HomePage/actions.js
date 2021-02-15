@@ -102,10 +102,3 @@ export const topNews = {
   success: response => createAction(TOP_NEWS[SUCCESS], { response }),
   failure: response => createAction(TOP_NEWS[FAILURE], { response }),
 };
-
-export const RECENTLY_VIEWED = createRequestTypes('RECENTLY_VIEWED');
-export const recentlyViewed = {
-  request: () => createAction(RECENTLY_VIEWED[REQUEST]),
-  success: response => createAction(RECENTLY_VIEWED[SUCCESS], { response }),
-  failure: response => createAction(RECENTLY_VIEWED[FAILURE], { response }),
-};

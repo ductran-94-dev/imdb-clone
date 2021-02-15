@@ -15,6 +15,8 @@
  *    }
  */
 
+import { createAction, createRequestTypes } from 'utils/actionCreator';
+import { FAILURE, REQUEST, SUCCESS } from 'utils/constants';
 import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
 
 /**
@@ -57,3 +59,10 @@ export function repoLoadingError(error) {
     error,
   };
 }
+
+export const RECENTLY_VIEWED = createRequestTypes('RECENTLY_VIEWED');
+export const recentlyViewed = {
+  request: () => createAction(RECENTLY_VIEWED[REQUEST]),
+  success: response => createAction(RECENTLY_VIEWED[SUCCESS], { response }),
+  failure: response => createAction(RECENTLY_VIEWED[FAILURE], { response }),
+};

@@ -69,11 +69,6 @@ const makeSelectTopNews = () =>
     selectHome,
     homeState => homeState.topNews.items,
   );
-const makeSelectRecentlyViewed = () =>
-  createSelector(
-    selectHome,
-    homeState => homeState.recentlyViewed.items,
-  );
 
 export {
   selectHome,
@@ -89,5 +84,4 @@ export {
   makeSelectEditorsPicks,
   makeSelectBornToday,
   makeSelectTopNews,
-  makeSelectRecentlyViewed,
 };

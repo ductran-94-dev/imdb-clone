@@ -7,6 +7,7 @@ import { all, takeLatest } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
 import request from 'utils/request';
 import { fetchEntity } from 'utils/sagaCreator';
+import * as appActions from 'containers/App/actions';
 import * as homeActions from './actions';
 
 export function* fetchUpcomingMovies() {
@@ -56,8 +57,8 @@ export function* fetchTopNews() {
   yield fetchEntity(request, requestURL, homeActions.topNews);
 }
 export function* fetchRecentlyViewed() {
-  const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=7`;
-  yield fetchEntity(request, requestURL, homeActions.recentlyViewed);
+  const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=8`;
+  yield fetchEntity(request, requestURL, appActions.recentlyViewed);
 }
 
 /** *************************************************************************** */
@@ -92,7 +93,7 @@ export function* watchTopNews() {
   yield takeLatest(homeActions.TOP_NEWS[REQUEST], fetchTopNews);
 }
 export function* watchRecentlyViewed() {
-  yield takeLatest(homeActions.RECENTLY_VIEWED[REQUEST], fetchRecentlyViewed);
+  yield takeLatest(appActions.RECENTLY_VIEWED[REQUEST], fetchRecentlyViewed);
 }
 
 export function* watchUpcomingMovies() {

@@ -13,7 +13,7 @@ import Title from './Title';
 function PageGroup({ children, title }) {
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <Title hidden={!title}>{title}</Title>
       {children}
     </Wrapper>
   );

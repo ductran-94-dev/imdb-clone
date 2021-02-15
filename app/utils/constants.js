@@ -5,3 +5,5 @@ export const ONCE_TILL_UNMOUNT = '@@saga-injector/once-till-unmount';
 export const REQUEST = 'REQUEST';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
+
+export const AMOUNT_ROW_ITEMS = '6';

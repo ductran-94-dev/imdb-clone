@@ -22,7 +22,6 @@ import {
   EDITORS_PICKS,
   BORN_TODAY,
   TOP_NEWS,
-  RECENTLY_VIEWED,
 } from './actions';
 
 // The initial state of the App
@@ -37,7 +36,6 @@ export const initialState = {
   editorsPicks: {},
   bornToday: {},
   topNews: {},
-  recentlyViewed: {},
   upcomingMovies: {},
   popularMovies: {},
 };
@@ -94,10 +92,6 @@ const homeReducer = (state = initialState, action) =>
       case TOP_NEWS[SUCCESS]:
         reduceFetchTopNews(action.response, draft);
         break;
-
-      case RECENTLY_VIEWED[SUCCESS]:
-        reduceFetchRecentlyViewed(action.response, draft);
-        break;
     }
   });
 
@@ -120,48 +114,51 @@ function reduceFetchFeaturedToday(response, draft) {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchTopPicks(response, draft) {
   draft.topPicks = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchWatchlist(response, draft) {
   draft.watchlist = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchFanFavourites(response, draft) {
   draft.fanFavourites = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchMoveToWatch(response, draft) {
   draft.moveToWatch = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchImdbOriginals(response, draft) {
   draft.imdbOriginals = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchEditorsPicks(response, draft) {
   draft.editorsPicks = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchBornToday(response, draft) {
   draft.bornToday = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }
+
 function reduceFetchTopNews(response, draft) {
   draft.topNews = {
     items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
-  };
-}
-function reduceFetchRecentlyViewed(response, draft) {
-  draft.recentlyViewed = {
-    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS - 3),
   };
 }

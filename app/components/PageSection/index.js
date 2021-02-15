@@ -12,11 +12,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Wrapper from './Wrapper';
 import Heading from './Heading';
 import Title from './Title';
+import Subtitle from './Subtitle';
 
-function PageSection({ children, title, seeAllLink }) {
+function PageSection({ children, title, subtitle, seeAllLink }) {
   return (
     <Wrapper>
-      <Heading hidden={!title.length}>
+      <Heading hidden={!title}>
         <Title
           {...(seeAllLink
             ? { as: Link, to: seeAllLink }
@@ -27,16 +28,18 @@ function PageSection({ children, title, seeAllLink }) {
             <span>
               <FontAwesomeIcon icon="chevron-right" />
             </span>
-          )}{' '}
+          )}
         </Title>
+        <Subtitle hidden={!subtitle}>{subtitle}</Subtitle>
       </Heading>
-      {children}{' '}
+      {children}
     </Wrapper>
   );
 }
 
 PageSection.propTypes = {
   title: PropTypes.string,
+  subtitle: PropTypes.string,
   children: PropTypes.element,
   seeAllLink: PropTypes.string,
 };

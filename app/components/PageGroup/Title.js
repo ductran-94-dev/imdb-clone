@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Title = styled.h3`
-  padding: 2rem;
+  padding: 2rem 0;
 
   color: var(--color-primary);
   font-weight: 700;
