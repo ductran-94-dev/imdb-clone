@@ -6,6 +6,10 @@
 import { createAction, createRequestTypes } from 'utils/actionCreator';
 import { FAILURE, REQUEST, SUCCESS } from 'utils/constants';
 
+export const CHANGE_TITLE_ID = 'CHANGE_TITLE_ID';
+export const changeTitleId = titleId =>
+  createAction(CHANGE_TITLE_ID, { titleId });
+
 export const MOVIE_DETAILS = createRequestTypes('MOVIE_DETAILS');
 export const movieDetails = {
   request: () => createAction(MOVIE_DETAILS[REQUEST]),

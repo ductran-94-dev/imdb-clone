@@ -1,45 +1,57 @@
 import { API_KEY } from 'containers/App/constants';
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest, select } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
 import request from 'utils/request';
 import { fetchEntity } from 'utils/sagaCreator';
 import * as appActions from 'containers/App/actions';
 import * as titleActions from './actions';
-
-const MOVIE_ID = '222935';
+import { makeSelectMovieId } from './selectors';
 
 export function* fetchMovieDetails() {
-  const requestURL = `https://api.themoviedb.org/3/movie/${MOVIE_ID}?api_key=${API_KEY}&language=en-US`;
+  const movieId = yield select(makeSelectMovieId());
+  const requestURL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+
   yield fetchEntity(request, requestURL, titleActions.movieDetails);
 }
 
 export function* fetchMoviePhotos() {
-  const requestURL = `https://api.themoviedb.org/3/movie/${MOVIE_ID}/images?api_key=${API_KEY}&language=en-US&page=1`;
+  const movieId = yield select(makeSelectMovieId());
+  const requestURL = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${API_KEY}&language=en-US&page=1`;
+
   yield fetchEntity(request, requestURL, titleActions.moviePhotos);
 }
 
 export function* fetchMovieVideos() {
-  const requestURL = `https://api.themoviedb.org/3/movie/${MOVIE_ID}/videos?api_key=${API_KEY}&language=en-US&page=1`;
+  const movieId = yield select(makeSelectMovieId());
+  const requestURL = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US&page=1`;
+
   yield fetchEntity(request, requestURL, titleActions.movieVideos);
 }
 
 export function* fetchMovieCast() {
-  const requestURL = `https://api.themoviedb.org/3/movie/${MOVIE_ID}/credits?api_key=${API_KEY}&language=en-US&page=1`;
+  const movieId = yield select(makeSelectMovieId());
+  const requestURL = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US&page=1`;
+
   yield fetchEntity(request, requestURL, titleActions.movieCast);
 }
 
 export function* fetchMovieSimilar() {
-  const requestURL = `https://api.themoviedb.org/3/movie/${MOVIE_ID}/recommendations?api_key=${API_KEY}&language=en-US&page=1`;
+  const movieId = yield select(makeSelectMovieId());
+  const requestURL = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`;
+
   yield fetchEntity(request, requestURL, titleActions.movieSimilar);
 }
 
 export function* fetchMovieReviews() {
-  const requestURL = `https://api.themoviedb.org/3/movie/${MOVIE_ID}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
+  const movieId = yield select(makeSelectMovieId());
+  const requestURL = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
+
   yield fetchEntity(request, requestURL, titleActions.movieReviews);
 }
 
 export function* fetchRecentlyViewed() {
   const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=7`;
+
   yield fetchEntity(request, requestURL, appActions.recentlyViewed);
 }
 

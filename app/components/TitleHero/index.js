@@ -6,48 +6,43 @@
 
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-function TitleHero({ titleDetails }) {
+import MovieItem from 'components/MovieItem';
+import VideoItem from 'components/VideoItem';
+
+import Wrapper from './Wrapper';
+import Box from './Box';
+
+function TitleHero({ titleDetails, videoCount, photoCount }) {
   return (
-    <div>
-      <Row>
-        <Col sm={3}>
-          <img
-            src={`https://www.themoviedb.org/t/p/w440_and_h660_face${
-              titleDetails.poster_path
-            }`}
-            alt={titleDetails.original_title}
-            className="mw-100"
-          />
-        </Col>
-        <Col sm={6}>
-          <img
-            src={`https://www.themoviedb.org/t/p/w1066_and_h600_bestv2${
-              titleDetails.backdrop_path
-            }`}
-            alt={titleDetails.original_title}
-            className="mw-100"
-          />
-        </Col>
-        <Col sm={3}>
-          <div className="p-5 bg-dark m-2 text-center">
-            <FontAwesomeIcon icon="images" size="2x" />
-            <p>54 PHOTOS</p>
-          </div>
-          <div className="p-5 bg-dark m-2 text-center">
-            <FontAwesomeIcon icon="play-circle" size="2x" />
-            <p>27 VIDEOS</p>
-          </div>
-        </Col>
-      </Row>
-    </div>
+    <Wrapper>
+      <div>
+        <MovieItem item={titleDetails} />
+      </div>
+      <div>
+        <VideoItem item={titleDetails} />
+      </div>
+      <div>
+        <Box>
+          <FontAwesomeIcon icon="images" size="2x" />
+          <h6>{photoCount} PHOTOS</h6>
+        </Box>
+      </div>
+      <div>
+        <Box>
+          <FontAwesomeIcon icon="play-circle" size="2x" />
+          <h6>{videoCount} VIDEOS</h6>
+        </Box>
+      </div>
+    </Wrapper>
   );
 }
 
 TitleHero.propTypes = {
   titleDetails: PropTypes.object,
+  videoCount: PropTypes.number,
+  photoCount: PropTypes.number,
 };
 
 export default TitleHero;

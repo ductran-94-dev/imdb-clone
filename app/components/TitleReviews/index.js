@@ -14,7 +14,7 @@ function TitleReviews({ titleReviews }) {
         titleReviews.map(item => (
           <div key={`titleReview-${item.id}`}>
             <h6>@{item.author}</h6>
-            <p>{item.content}</p>
+            <p>{item.content.slice(0, 400)}</p>
           </div>
         ))}
     </React.Fragment>

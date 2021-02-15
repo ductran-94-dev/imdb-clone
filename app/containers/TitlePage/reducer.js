@@ -12,9 +12,11 @@ import {
   MOVIE_SIMILAR,
   MOVIE_REVIEWS,
   MOVIE_VIDEOS,
+  CHANGE_TITLE_ID,
 } from './actions';
 
 export const initialState = {
+  titleId: false,
   titleDetails: {},
   titlePhotos: {},
   titleVideos: {},
@@ -28,7 +30,8 @@ export const initialState = {
 const titlePageReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case 'default':
+      case CHANGE_TITLE_ID:
+        draft.titleId = action.titleId;
         break;
 
       case MOVIE_DETAILS[SUCCESS]:

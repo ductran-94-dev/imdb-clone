@@ -21,6 +21,12 @@ const makeSelectTitlePage = () =>
     substate => substate,
   );
 
+const makeSelectMovieId = () =>
+  createSelector(
+    selectTitlePageDomain,
+    titleState => titleState.titleId,
+  );
+
 const makeSelectMovieDetails = () =>
   createSelector(
     selectTitlePageDomain,
@@ -59,6 +65,7 @@ const makeSelectMovieReviews = () =>
 
 export default makeSelectTitlePage;
 export {
+  makeSelectMovieId,
   makeSelectMovieDetails,
   makeSelectMoviePhotos,
   makeSelectMovieVideos,

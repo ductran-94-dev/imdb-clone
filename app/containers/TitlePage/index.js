@@ -27,15 +27,17 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import { getYearAtReleaseDate } from 'services/date';
+import { getSearchParam } from 'services/url';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { getYearAtReleaseDate } from 'services/date';
 import * as titleActions from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import * as titleSelectors from './selectors';
 
 export function TitlePage({
+  titleId,
   titleDetails,
   titlePhotos,
   titleVideos,
@@ -43,6 +45,7 @@ export function TitlePage({
   titleSimilar,
   titleReviews,
   recentlyViewed,
+  location,
   onLoadTitleDetails,
   onLoadTitlePhotos,
   onLoadTitleVideos,
@@ -50,23 +53,36 @@ export function TitlePage({
   onLoadTitleSimilar,
   onLoadTitleReviews,
   onLoadRecentlyViewed,
+  onChangeTitleId,
 }) {
   useInjectReducer({ key: 'titlePage', reducer });
   useInjectSaga({ key: 'titlePage', saga });
 
-  useEffect(() => {
-    onLoadRecentlyViewed();
+  const fetchTitleContent = () => {
     onLoadTitleDetails();
     onLoadTitlePhotos();
     onLoadTitleVideos();
     onLoadTitleCast();
     onLoadTitleSimilar();
     onLoadTitleReviews();
+    onLoadRecentlyViewed();
+  };
+
+  const getTitleId = () => getSearchParam(location, 'id');
+
+  useEffect(() => {
+    if (titleId) fetchTitleContent();
+
+    const newTitleId = getTitleId();
+    onChangeTitleId(+newTitleId);
+    fetchTitleContent();
   }, []);
 
   if (!titleDetails) return null;
 
   const titleYear = getYearAtReleaseDate(titleDetails.release_date);
+  const videoCount = titleVideos ? titleVideos.length : 0;
+  const photoCount = titlePhotos ? titlePhotos.length : 0;
 
   return (
     <div>
@@ -74,12 +90,16 @@ export function TitlePage({
         <title>
           {titleDetails.title} ({titleYear})
         </title>
-        <meta name="description" content="Description of TitlePage" />
+        <meta name="description" content={titleDetails.overview} />
       </Helmet>
       <Container>
         <div>
           <TitleMetaData titleDetails={titleDetails} />
-          <TitleHero titleDetails={titleDetails} />
+          <TitleHero
+            titleDetails={titleDetails}
+            videoCount={videoCount}
+            photoCount={photoCount}
+          />
           <Row>
             <Col sm={8}>
               <p>
@@ -132,36 +152,35 @@ export function TitlePage({
           <Row>
             <Col>
               <PageGroup>
-                <PageSection hidden title="Videos" seeAllLink="/">
+                <PageSection title="Videos" seeAllLink="/">
                   <TitleVideos titleVideos={titleVideos} />
                 </PageSection>
-                <PageSection hidden title="Photos" seeAllLink="/">
+                <PageSection title="Photos" seeAllLink="/">
                   <TitlePhotos titlePhotos={titlePhotos} />
                 </PageSection>
                 <PageSection
                   title="Cast"
                   subtitle="Cast overview, first billed only"
                   seeAllLink="/"
-                  hidden
                 >
                   <TitleCast titleCast={titleCast} />
                 </PageSection>
-                <PageSection hidden title="More like this" seeAllLink="/">
+                <PageSection title="More like this" seeAllLink="/">
                   <TitleSimilar titleSimilar={titleSimilar} />
                 </PageSection>
-                <PageSection hidden title="Storyline" seeAllLink="/">
+                <PageSection title="Storyline" seeAllLink="/">
                   <TitleStoryline titleDetails={titleDetails} />
                 </PageSection>
                 <PageSection title="Did you know" seeAllLink="/">
                   <Box />
                 </PageSection>
-                <PageSection hidden title="User reviews" seeAllLink="/">
+                <PageSection title="User reviews" seeAllLink="/">
                   <TitleReviews titleReviews={titleReviews} />
                 </PageSection>
                 <PageSection title="FQA" seeAllLink="/">
                   <Box />
                 </PageSection>
-                <PageSection hidden title="Details" seeAllLink="/">
+                <PageSection title="Details" seeAllLink="/">
                   <TitleDetails titleDetails={titleDetails} />
                 </PageSection>
                 <PageSection title="Box office" seeAllLink="/">
@@ -170,7 +189,7 @@ export function TitlePage({
                 <PageSection title="Technical Specs" seeAllLink="/">
                   <Box />
                 </PageSection>
-                <PageSection hidden title="Related news" seeAllLink="/">
+                <PageSection title="Related news" seeAllLink="/">
                   <RelatedNews />
                 </PageSection>
               </PageGroup>
@@ -215,6 +234,7 @@ export function TitlePage({
 }
 
 TitlePage.propTypes = {
+  titleId: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   titleDetails: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   titlePhotos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   titleVideos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
@@ -222,6 +242,8 @@ TitlePage.propTypes = {
   titleSimilar: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   titleReviews: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   recentlyViewed: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  location: PropTypes.any,
+  onChangeTitleId: PropTypes.func,
   onLoadTitleDetails: PropTypes.func,
   onLoadTitlePhotos: PropTypes.func,
   onLoadTitleVideos: PropTypes.func,
@@ -232,6 +254,7 @@ TitlePage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
+  titleId: titleSelectors.makeSelectMovieId(),
   titleDetails: titleSelectors.makeSelectMovieDetails(),
   titlePhotos: titleSelectors.makeSelectMoviePhotos(),
   titleVideos: titleSelectors.makeSelectMovieVideos(),
@@ -239,9 +262,11 @@ const mapStateToProps = createStructuredSelector({
   titleSimilar: titleSelectors.makeSelectMovieSimilar(),
   titleReviews: titleSelectors.makeSelectMovieReviews(),
   recentlyViewed: appSelectors.makeSelectRecentlyViewed(),
+  location: appSelectors.makeSelectLocation(),
 });
 
 function mapDispatchToProps(dispatch) {
+  const onChangeTitleId = titleActions.changeTitleId;
   const onLoadTitleDetails = titleActions.movieDetails.request;
   const onLoadTitlePhotos = titleActions.moviePhotos.request;
   const onLoadTitleVideos = titleActions.movieVideos.request;
@@ -252,6 +277,7 @@ function mapDispatchToProps(dispatch) {
 
   return bindActionCreators(
     {
+      onChangeTitleId,
       onLoadTitleDetails,
       onLoadTitlePhotos,
       onLoadTitleVideos,
