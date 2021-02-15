@@ -103,39 +103,20 @@ export function TitlePage({
           <Row>
             <Col sm={8}>
               <p>
-                <Button
-                  variant="outline-light"
-                  size="sm"
-                  style={{
-                    borderRadius: 20,
-                    marginRight: '0.5rem',
-                    borderWidth: 2,
-                  }}
-                >
-                  Drama
-                </Button>
-                <Button
-                  variant="outline-light"
-                  size="sm"
-                  style={{
-                    borderRadius: 20,
-                    marginRight: '0.5rem',
-                    borderWidth: 2,
-                  }}
-                >
-                  Fantasy
-                </Button>
-                <Button
-                  variant="outline-light"
-                  size="sm"
-                  style={{
-                    borderRadius: 20,
-                    marginRight: '0.5rem',
-                    borderWidth: 2,
-                  }}
-                >
-                  Music
-                </Button>
+                {titleDetails.genres.map(item => (
+                  <Button
+                    key={`genre-${item.id}`}
+                    variant="outline-light"
+                    size="sm"
+                    style={{
+                      borderRadius: 20,
+                      marginRight: '0.5rem',
+                      borderWidth: 2,
+                    }}
+                  >
+                    {item.name}
+                  </Button>
+                ))}
               </p>
               <p>{titleDetails.overview}</p>
               <ListGroup variant="flush">
