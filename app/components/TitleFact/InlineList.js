@@ -8,6 +8,7 @@ const InlineList = styled.ul`
 
   padding: 0;
   margin: 0;
+  margin-left: 1rem;
 
   color: var(--link-hover-color);
 `;

@@ -18,11 +18,12 @@ import TitleReviews from 'components/TitleReviews';
 import TitleSimilar from 'components/TitleSimilar';
 import TitleStoryline from 'components/TitleStoryline';
 import TitleVideos from 'components/TitleVideos';
+import TitleFact from 'components/TitleFact';
 import * as appActions from 'containers/App/actions';
 import * as appSelectors from 'containers/App/selectors';
 import PropTypes from 'prop-types';
 import React, { memo, useEffect } from 'react';
-import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
@@ -106,36 +107,7 @@ export function TitlePage({
             videoCount={videoCount}
             photoCount={photoCount}
           />
-          <Row>
-            <Col sm={8}>
-              <p>
-                {titleDetails.genres.map(item => (
-                  <Button
-                    key={`genre-${item.id}`}
-                    variant="outline-light"
-                    size="sm"
-                    style={{
-                      borderRadius: 20,
-                      marginRight: '0.5rem',
-                      borderWidth: 2,
-                    }}
-                  >
-                    {item.name}
-                  </Button>
-                ))}
-              </p>
-              <p>{titleDetails.overview}</p>
-              <ListGroup variant="flush">
-                <ListGroup.Item variant="dark">Director</ListGroup.Item>
-                <ListGroup.Item variant="dark">Writers</ListGroup.Item>
-                <ListGroup.Item variant="dark">Stars</ListGroup.Item>
-                <ListGroup.Item variant="dark">IMDbPro</ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col sm={4}>
-              <Box />
-            </Col>
-          </Row>
+          <TitleFact titleDetails={titleDetails} />
           <Row>
             <Col>
               <PageGroup>
