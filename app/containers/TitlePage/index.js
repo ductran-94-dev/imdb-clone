@@ -27,6 +27,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import { animateScroll as scroll } from 'react-scroll';
 import { getYearAtReleaseDate } from 'services/date';
 import { getSearchParam } from 'services/url';
 import { useInjectReducer } from 'utils/injectReducer';
@@ -71,12 +72,17 @@ export function TitlePage({
   const getTitleId = () => getSearchParam(location, 'id');
 
   useEffect(() => {
+    scroll.scrollToTop({
+      smooth: true,
+      delay: 500,
+    });
+
     if (titleId) fetchTitleContent();
 
     const newTitleId = getTitleId();
     onChangeTitleId(+newTitleId);
     fetchTitleContent();
-  }, []);
+  }, [location]);
 
   if (!titleDetails) return null;
 
