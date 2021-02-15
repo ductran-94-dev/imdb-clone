@@ -33,21 +33,21 @@ function TitleMetaData({ titleDetails, hidden }) {
         </InlineList>
       </div>
       <ListGroup horizontal>
-        <ListGroupItem variant="dark">
+        <ListGroupItem>
           <h6>IMDb RATING</h6>
           <Button block variant="outline-dark">
             <FontAwesomeIcon icon="star" className="text-warning" />
             {` ${titleDetails.vote_average}`} <sub>/10</sub>
           </Button>
         </ListGroupItem>
-        <ListGroupItem variant="dark">
+        <ListGroupItem>
           <h6>YOUR RATING</h6>
           <Button block variant="outline-dark">
             <FontAwesomeIcon icon="star" className="text-secondary" />
             {` Rate`}
           </Button>
         </ListGroupItem>
-        <ListGroupItem variant="dark">
+        <ListGroupItem>
           <h6>POPULARITY</h6>
           <Button block variant="outline-dark">
             <FontAwesomeIcon icon="chart-line" className="text-success" />
