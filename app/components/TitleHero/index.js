@@ -18,7 +18,7 @@ function TitleHero({ titleDetails, videoCount, photoCount }) {
   return (
     <Wrapper>
       <div>
-        <MovieItem item={titleDetails} />
+        <MovieItem isPoster item={titleDetails} />
       </div>
       <div>
         <VideoItem item={titleDetails} />

@@ -6,11 +6,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Wrapper from './Wrapper';
 import Link from './Link';
+import Title from './Title';
+import Subtitle from './Subtitle';
 
-function MovieItem({ item, isNormal }) {
+function MovieItem({ item, isPoster }) {
   const source = `https://www.themoviedb.org/t/p/w440_and_h660_face/${
     item.poster_path
   }`;
@@ -19,9 +22,11 @@ function MovieItem({ item, isNormal }) {
     <Wrapper>
       <Link to={`/title?id=${item.id}`}>
         <img src={source} alt={item.title} className="w-100" />
-        {isNormal && (
-          <h6 className="text-center py-3">{item.original_title}</h6>
-        )}
+        <Subtitle hidden={isPoster}>
+          {`${item.vote_average} `}
+          <FontAwesomeIcon icon="star" className="text-warning" />
+        </Subtitle>
+        <Title hidden={isPoster}>{item.original_title}</Title>
       </Link>
     </Wrapper>
   );
@@ -29,7 +34,7 @@ function MovieItem({ item, isNormal }) {
 
 MovieItem.propTypes = {
   item: PropTypes.object,
-  isNormal: PropTypes.bool,
+  isPoster: PropTypes.bool,
 };
 
 export default MovieItem;

@@ -1,14 +1,13 @@
 const theme = {
   colors: {
-    // main: '#e50914',
     main: '#f5c518',
     dark: '#141414',
     darker: '#000000',
     light: '#546e7a',
     lighter: '#b0bec5',
-    text: '#fafafa',
-    link: '#fafafa',
-    linkHover: 'rgba(255, 255, 255, 0.7)',
+    text: '#141414',
+    link: '#141414',
+    linkHover: '#444444',
   },
   size: {
     smallest: '25em', // 275px

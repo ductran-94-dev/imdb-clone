@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    background-color: var(--color-primary-darker);
+    background-color: var(--color-primary-ligth);
     color: var(--text-color);
     min-height: 100%;
     min-width: 100%;

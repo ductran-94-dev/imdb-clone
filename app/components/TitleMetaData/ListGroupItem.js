@@ -4,6 +4,7 @@ import { ListGroupItem as NormalListGroupItem } from 'react-bootstrap';
 const ListGroupItem = styled(NormalListGroupItem)`
   background-color: transparent;
   color: var(--link-hover-color);
+  border: 0;
 
   padding-left: 1.5rem;
   padding-right: 1.5rem;
