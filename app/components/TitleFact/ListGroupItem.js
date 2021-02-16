@@ -9,11 +9,11 @@ const ListGroupItem = styled(NormalListGroupItem)`
   padding-right: 0;
 
   strong {
-    color: var(--link-hover-color);
+    color: var(--app-primary-text);
   }
 
   a {
-    color: #5799ef;
+    color: var(--app-secondary-text);
   }
 `;
 

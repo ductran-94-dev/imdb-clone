@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     'poster poster video video video video video posterBox posterBox'
     'poster poster video video video video video videoBox videoBox';
 
-  margin-bottom: 2rem;
+  padding: 2rem 0;
 
   & > div {
     img {

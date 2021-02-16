@@ -21,6 +21,7 @@ export const initialState = {
   titlePhotos: {},
   titleVideos: {},
   titleCast: {},
+  titleCrew: {},
   titleSimilar: {},
   titleReviews: {},
   relatedNews: {},
@@ -81,10 +82,14 @@ function reduceFetchMovieVideos(response, draft) {
 }
 
 function reduceFetchMovieCast(response, draft) {
-  const items = response.cast.filter((_, idx) => idx < 8);
+  const castItems = response.cast.filter((_, idx) => idx < 8);
+  const crewItems = response.crew.filter((_, idx) => idx < 8);
 
   draft.titleCast = {
-    items,
+    items: castItems,
+  };
+  draft.titleCrew = {
+    items: crewItems,
   };
 }
 

@@ -41,6 +41,7 @@ export function TitlePage({
   titlePhotos,
   titleVideos,
   titleCast,
+  titleCrew,
   titleSimilar,
   titleReviews,
   recentlyViewed,
@@ -85,8 +86,6 @@ export function TitlePage({
   if (!titleDetails) return null;
 
   const titleYear = getYearAtReleaseDate(titleDetails.release_date);
-  const videoCount = titleVideos ? titleVideos.length : 0;
-  const photoCount = titlePhotos ? titlePhotos.length : 0;
 
   return (
     <div>
@@ -97,61 +96,59 @@ export function TitlePage({
         <meta name="description" content={titleDetails.overview} />
       </Helmet>
       <Container>
-        <div>
-          <TitleMetaData titleDetails={titleDetails} />
-          <TitleHero
-            titleDetails={titleDetails}
-            videoCount={videoCount}
-            photoCount={photoCount}
-          />
-          <TitleFact titleDetails={titleDetails} />
-          <Row>
-            <Col>
-              <PageGroup>
-                <PageSection title="Videos" seeAllLink="/">
-                  <TitleVideos titleVideos={titleVideos} />
-                </PageSection>
-                <PageSection title="Photos" seeAllLink="/">
-                  <TitlePhotos titlePhotos={titlePhotos} />
-                </PageSection>
-                <PageSection
-                  title="Cast"
-                  subtitle="Cast overview, first billed only"
-                  seeAllLink="/"
-                >
-                  <TitleCast titleCast={titleCast} />
-                </PageSection>
-                <PageSection title="More like this" seeAllLink="/">
-                  <TitleSimilar titleSimilar={titleSimilar} />
-                </PageSection>
-                <PageSection title="User reviews" seeAllLink="/">
-                  <TitleReviews titleReviews={titleReviews} />
-                </PageSection>
-              </PageGroup>
-            </Col>
-            <Col sm={4}>
-              <PageGroup title="More to explore">
-                <PageSection title="">
-                  <Box />
-                </PageSection>
-                <PageSection
-                  title="User lists"
-                  subtitle="Related lists from IMDb users"
-                  seeAllLink="/"
-                >
-                  <Box />
-                </PageSection>
-                <PageSection
-                  title="User polls"
-                  subtitle="Related poll from IMDb users"
-                  seeAllLink="/"
-                >
-                  <Box />
-                </PageSection>
-              </PageGroup>
-            </Col>
-          </Row>
-        </div>
+        <TitleFact
+          titleDetails={titleDetails}
+          titleCast={titleCast}
+          titleCrew={titleCrew}
+        />
+        <Row>
+          <Col>
+            <TitleMetaData hidden titleDetails={titleDetails} />
+            <TitleHero hidden titleDetails={titleDetails} />
+            <PageGroup>
+              <PageSection title="Videos" seeAllLink="/">
+                <TitleVideos titleVideos={titleVideos} />
+              </PageSection>
+              <PageSection title="Photos" seeAllLink="/">
+                <TitlePhotos titlePhotos={titlePhotos} />
+              </PageSection>
+              <PageSection
+                title="Cast"
+                subtitle="Cast overview, first billed only"
+                seeAllLink="/"
+              >
+                <TitleCast titleCast={titleCast} />
+              </PageSection>
+              <PageSection title="More like this" seeAllLink="/">
+                <TitleSimilar titleSimilar={titleSimilar} />
+              </PageSection>
+              <PageSection title="User reviews" seeAllLink="/">
+                <TitleReviews titleReviews={titleReviews} />
+              </PageSection>
+            </PageGroup>
+          </Col>
+          <Col sm={4} className="d-none d-lg-block">
+            <PageGroup title="More to explore">
+              <PageSection title="">
+                <Box />
+              </PageSection>
+              <PageSection
+                title="User lists"
+                subtitle="Related lists from IMDb users"
+                seeAllLink="/"
+              >
+                <Box />
+              </PageSection>
+              <PageSection
+                title="User polls"
+                subtitle="Related poll from IMDb users"
+                seeAllLink="/"
+              >
+                <Box />
+              </PageSection>
+            </PageGroup>
+          </Col>
+        </Row>
         <PageGroup title="">
           <PageSection title="Recently viewed">
             <MoviesList
@@ -174,6 +171,7 @@ TitlePage.propTypes = {
   titlePhotos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   titleVideos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   titleCast: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  titleCrew: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   titleSimilar: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   titleReviews: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   recentlyViewed: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
@@ -194,6 +192,7 @@ const mapStateToProps = createStructuredSelector({
   titlePhotos: titleSelectors.makeSelectMoviePhotos(),
   titleVideos: titleSelectors.makeSelectMovieVideos(),
   titleCast: titleSelectors.makeSelectMovieCast(),
+  titleCrew: titleSelectors.makeSelectMovieCrew(),
   titleSimilar: titleSelectors.makeSelectMovieSimilar(),
   titleReviews: titleSelectors.makeSelectMovieReviews(),
   recentlyViewed: appSelectors.makeSelectRecentlyViewed(),

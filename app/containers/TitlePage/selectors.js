@@ -51,6 +51,12 @@ const makeSelectMovieCast = () =>
     titleState => titleState.titleCast.items,
   );
 
+const makeSelectMovieCrew = () =>
+  createSelector(
+    selectTitlePageDomain,
+    titleState => titleState.titleCrew.items,
+  );
+
 const makeSelectMovieSimilar = () =>
   createSelector(
     selectTitlePageDomain,
@@ -70,6 +76,7 @@ export {
   makeSelectMoviePhotos,
   makeSelectMovieVideos,
   makeSelectMovieCast,
+  makeSelectMovieCrew,
   makeSelectMovieSimilar,
   makeSelectMovieReviews,
 };

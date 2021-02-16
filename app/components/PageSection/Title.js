@@ -27,6 +27,7 @@ const Title = styled.a`
   }
 
   &:hover {
+    color: var(--app-primary-text);
     text-decoration: none;
 
     span {
