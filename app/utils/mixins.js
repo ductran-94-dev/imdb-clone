@@ -14,6 +14,14 @@ const mixins = {
     border-radius: 0;
   `,
 
+  transdrop: css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  `,
+
   textTruncate: css`
     text-overflow: ellipsis;
     white-space: nowrap;

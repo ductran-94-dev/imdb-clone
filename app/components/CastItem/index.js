@@ -6,41 +6,35 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getProfilePath } from 'services/url';
 
 import Wrapper from './Wrapper';
 import Figure from './Figure';
 import Img from './Img';
 import Title from './Title';
 import Subtitle from './Subtitle';
-import Link from './Link';
-import Body from './Body';
+import Anchor from './Anchor';
+import Metadata from './Metadata';
 
-function CastItem({ item, isPoster }) {
+function CastItem({ item }) {
+  const profilePath = getProfilePath(item.profile_path);
+
   return (
     <Wrapper>
-      <Link to="/">
-        <Figure>
-          {item.profile_path ? (
-            <Img
-              src={`https://www.themoviedb.org/t/p/w276_and_h350_face${
-                item.profile_path
-              }`}
-              alt={item.original_name}
-            />
-          ) : null}
-        </Figure>
-        <Body hidden={isPoster}>
-          <Title>{item.name}</Title>
-          <Subtitle>{item.name}</Subtitle>
-        </Body>
-      </Link>
+      <Figure>
+        <Img src={profilePath} alt={item.original_name} />
+      </Figure>
+      <Metadata>
+        <Title>{item.name}</Title>
+        <Subtitle>{item.known_for_department}</Subtitle>
+      </Metadata>
+      <Anchor to={`/cast?id=${item.id}`} />
     </Wrapper>
   );
 }
 
 CastItem.propTypes = {
   item: PropTypes.object,
-  isPoster: PropTypes.bool,
 };
 
 export default CastItem;

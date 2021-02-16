@@ -17,3 +17,9 @@ export const getBackdrop = backdropPath => {
 
   return `https://www.themoviedb.org/t/p/w440_and_h660_face${backdropPath}`;
 };
+
+export const getProfilePath = profilePath => {
+  if (!profilePath) return null;
+
+  return `https://www.themoviedb.org/t/p/w276_and_h350_face${profilePath}`;
+};

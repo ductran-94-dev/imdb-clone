@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Body = styled.div`
+const Metadata = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -9,4 +9,4 @@ const Body = styled.div`
   height: 100%;
 `;
 
-export default Body;
+export default Metadata;

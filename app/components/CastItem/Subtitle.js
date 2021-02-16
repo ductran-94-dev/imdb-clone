@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 const Subtitle = styled.h6`
   margin: 0;
+  margin-top: 3px;
 
   font-size: 0.8rem;
-  font-weight: 400;
+  font-weight: 700;
+  color: var(--app-secondary-text);
 `;
 
 export default Subtitle;
