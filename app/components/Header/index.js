@@ -1,49 +1,36 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { NavLink } from 'react-router-dom';
+import { NavLink as RouteNavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Navbar, Nav, Form, FormControl, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
+import SearchBar from 'containers/SearchBar';
 import Wrapper from './Wrapper';
 import LogoLink from './LogoLink';
-import messages from './messages';
+import NavLink from './NavLink';
 
 function Header() {
   return (
     <Wrapper expand="md">
       <Container>
         <LogoLink href="/">
-          <FormattedMessage {...messages.imdb} />
+          <FontAwesomeIcon icon="question-circle" size="2x" />
         </LogoLink>
         <Navbar.Collapse>
-          <Nav>
-            <Nav.Link href="/">
-              <FontAwesomeIcon icon="bars" />
-              {' Menu'}
-            </Nav.Link>
-          </Nav>
-          <Form
-            className="px-5"
-            style={{
-              flexGrow: 1,
-              flexShrink: 1,
-            }}
-          >
-            <FormControl type="text" placeholder="Search IMDb" />
-          </Form>
+          <SearchBar />
           <Nav className="ml-auto">
-            <Nav.Link to="/imdb_pro" as={NavLink}>
-              <strong>IMDbPro</strong>
-            </Nav.Link>
-            <Nav.Link to="/watchlist" as={NavLink}>
-              <FontAwesomeIcon icon="calendar-plus" />
-              {' Watchlist'}
-            </Nav.Link>
-            <Nav.Link to="/sign_in" as={NavLink}>
-              <FontAwesomeIcon icon="user-ninja" />
-              {' Sign In'}
-            </Nav.Link>
+            <NavLink to="/plus" as={RouteNavLink}>
+              <FontAwesomeIcon icon="plus" />
+            </NavLink>
+            <NavLink to="/bookmark" as={RouteNavLink}>
+              <FontAwesomeIcon icon="bookmark" />
+            </NavLink>
+            <NavLink to="/bell" as={RouteNavLink}>
+              <FontAwesomeIcon icon="bell" />
+            </NavLink>
+            <NavLink to="/faCaretDown" as={RouteNavLink}>
+              <FontAwesomeIcon icon="caret-down" />
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
