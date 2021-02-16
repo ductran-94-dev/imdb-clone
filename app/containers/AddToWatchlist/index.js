@@ -13,35 +13,36 @@ import { compose } from 'redux';
 import { Button } from 'react-bootstrap';
 
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectAddToWatchlist from './selectors';
+// import makeSelectAddToWatchlist from './selectors';
 import reducer from './reducer';
 
-export function AddToWatchlist({ component }) {
-  useInjectReducer({ key: 'addToWatchlist', reducer });
+export function AddToWatchlist({ component, id, ...restProps }) {
+  useInjectReducer({
+    key: 'addToWatchlist',
+    reducer,
+  });
 
-  const addToWatchlist = () => {
+  const onAdd = e => {
+    e.stopPropagation();
     // eslint-disable-next-line no-alert
-    alert('addToWatchlist');
+    alert(`addToWatchlist ${id}`);
   };
 
-  return (
-    <Button as={component} onClick={addToWatchlist}>
-      Add to watchlist
-    </Button>
-  );
+  return <Button as={component} onClick={onAdd} {...restProps} />;
 }
 
 AddToWatchlist.propTypes = {
   component: PropTypes.any,
+  id: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({
-  addToWatchlist: makeSelectAddToWatchlist(),
+  // addToWatchlist: makeSelectAddToWatchlist(),
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(/* dispatch */) {
   return {
-    dispatch,
+    // dispatch,
   };
 }
 

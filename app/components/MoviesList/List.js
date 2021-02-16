@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Ul = styled.ul`
+const List = styled.div`
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   padding: 0rem 0;
@@ -8,4 +8,4 @@ const Ul = styled.ul`
   margin: 0;
 `;
 
-export default Ul;
+export default List;

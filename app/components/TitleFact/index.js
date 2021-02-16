@@ -80,7 +80,14 @@ function TitleFact({ titleDetails }) {
           </ListGroup>
         </Col>
         <Col sm={4}>
-          <AddToWatchlist as={Button} />
+          <AddToWatchlist
+            component={Button}
+            size="lg"
+            block
+            id={titleDetails.id}
+          >
+            + Add To Watch
+          </AddToWatchlist>
         </Col>
       </Row>
     </Wrapper>

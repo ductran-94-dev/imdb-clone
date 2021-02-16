@@ -9,6 +9,17 @@ const mixins = {
     border-radius: 10px;
   `,
 
+  resetButton: css`
+    border: 0;
+    border-radius: 0;
+  `,
+
+  textTruncate: css`
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  `,
+
   link: css`
     display: inline-block;
     text-decoration: none;

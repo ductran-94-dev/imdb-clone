@@ -16,7 +16,7 @@ function TitleSimilar({ titleSimilar }) {
       {titleSimilar &&
         titleSimilar.map(item => (
           <Col key={`titleRecommendation-${item.id}`} sm={3}>
-            <MovieItem item={item} />
+            <MovieItem movie={item} />
           </Col>
         ))}
     </Row>

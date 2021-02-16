@@ -54,6 +54,6 @@ export default appReducer;
 
 function reduceFetchRecentlyViewed(response, draft) {
   draft.recentlyViewed = {
-    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS - 3),
+    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
   };
 }

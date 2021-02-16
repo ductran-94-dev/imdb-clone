@@ -1,15 +1,15 @@
 import styled from 'styled-components';
+import mixins from 'utils/mixins';
 
 const Title = styled.h3`
+  ${mixins.textTruncate};
+
   margin: 0;
+  margin-top: 3px;
   padding: 0;
-  padding-top: 0.5rem;
 
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 400;
 `;
 
 export default Title;
