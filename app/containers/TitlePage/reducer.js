@@ -81,8 +81,10 @@ function reduceFetchMovieVideos(response, draft) {
 }
 
 function reduceFetchMovieCast(response, draft) {
+  const items = response.cast.filter((_, idx) => idx < 8);
+
   draft.titleCast = {
-    items: response.cast.filter((_, idx) => idx < 8),
+    items,
   };
 }
 

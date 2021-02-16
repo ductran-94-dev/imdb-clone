@@ -18,6 +18,7 @@ const Backdrop = styled.div`
   padding: 1rem;
 
   background-color: transparent;
+  color: var(--app-primary-light);
   transition: all 1s ease-in-out;
 
   h3 {
@@ -33,7 +34,7 @@ const Backdrop = styled.div`
       margin-left: 5px;
 
       font-size: 1rem;
-      color: var(--link-hover-color);
+      color: var(--app-primary-light);
     }
   }
 
@@ -41,7 +42,7 @@ const Backdrop = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
 
     h3 {
-      color: var(--color-primary);
+      color: var(--app-primary);
     }
   }
 `;

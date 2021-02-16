@@ -1,32 +1,18 @@
 const theme = {
   colors: {
-    // main: '#f5c518',
-    main: '#385898',
-    dark: '#141414',
-    darker: '#000000',
+    primary: '#385898',
+    secondary: '#f0f2f5',
+    success: '',
+    info: '',
+    warning: '',
+    danger: '',
     light: '#ffffff',
-    lighter: '#fafafa',
-    text: '#141414',
-    link: '#141414',
-    linkHover: '#444444',
-  },
-  size: {
-    smallest: '25em', // 275px
-    smaller: '31.25em', // 500px
-    small: '37.5em', // 600px
-    medium: '56.25em', // 900px
-    large: '80em', // 1300px
-    larger: '90em', // 1300px
-    largest: '97em', // 1500px
-  },
-  mediaQueries: {
-    smallest: `only screen and (max-width: 25em)`,
-    smaller: 'only screen and (max-width: 31.25em)',
-    small: 'only screen and (max-width: 37.5em)',
-    medium: 'only screen and (max-width: 56.25em)',
-    large: 'only screen and (max-width: 80em)',
-    larger: 'only screen and (max-width: 90em)',
-    largest: 'only screen and (max-width: 97em)',
+    dark: '',
+    textPrimary: '#050505',
+    textSecondary: '#65676b',
+    linkPrimary: '#050505',
+    linkSecondary: '#65676b',
+    shadowPrimary: 'rgba(0, 0, 0, 10%)',
   },
 };
 

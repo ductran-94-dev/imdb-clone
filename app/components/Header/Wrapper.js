@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import Navbar from 'react-bootstrap/Navbar';
+import mixins from 'utils/mixins';
 
 const Wrapper = styled(Navbar)`
   width: 100%;
-  background-color: var(--color-primary-light);
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 10%);
+  background-color: var(--app-light);
+
+  ${mixins.boxShadow};
 `;
 
 export default Wrapper;

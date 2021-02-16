@@ -10,6 +10,7 @@ const Figure = styled.figure`
   height: 0;
 
   border-radius: 50%;
+  background-color: var(--app-primary);
 `;
 
 export default Figure;

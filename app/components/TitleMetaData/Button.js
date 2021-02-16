@@ -5,7 +5,7 @@ const Button = styled(NormalButton)`
   font-weight: 700;
   font-size: 1.2rem;
   border: none;
-  color: var(--text-color);
+  color: var(--app-primary-text);
 
   sub {
     color: var(--link-hover-color);

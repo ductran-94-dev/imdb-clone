@@ -9,7 +9,8 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: var(--color-primary-dark);
+  background-color: var(--app-primary-dark);
+  color: var(--app-primary-light);
   border-radius: 10px;
   cursor: pointer;
   transition: all 1s ease-in-out;
@@ -22,7 +23,7 @@ const Box = styled.div`
   }
 
   &:hover {
-    background-color: var(--color-primary-darker);
+    background-color: var(--app-primary-darker);
   }
 `;
 

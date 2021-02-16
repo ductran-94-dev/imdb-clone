@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import mixins from 'utils/mixins';
 
 const Wrapper = styled.div`
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 10%);
   overflow: hidden;
+  background-color: var(--app-light);
+
+  ${mixins.boxShadow};
+  ${mixins.borderRadius};
 `;
 
 export default Wrapper;

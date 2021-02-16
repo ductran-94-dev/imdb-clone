@@ -18,7 +18,7 @@ const Title = styled.a`
     height: 100%;
     width: 4px;
 
-    background: var(--color-primary);
+    background: var(--app-primary);
     border-radius: 4px;
   }
 
@@ -30,7 +30,7 @@ const Title = styled.a`
     text-decoration: none;
 
     span {
-      color: var(--color-primary);
+      color: var(--app-primary);
     }
   }
 `;

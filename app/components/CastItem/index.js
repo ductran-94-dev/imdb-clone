@@ -20,12 +20,14 @@ function CastItem({ item, isPoster }) {
     <Wrapper>
       <Link to="/">
         <Figure>
-          <Img
-            src={`https://www.themoviedb.org/t/p/w276_and_h350_face${
-              item.profile_path
-            }`}
-            alt={item.original_name}
-          />
+          {item.profile_path ? (
+            <Img
+              src={`https://www.themoviedb.org/t/p/w276_and_h350_face${
+                item.profile_path
+              }`}
+              alt={item.original_name}
+            />
+          ) : null}
         </Figure>
         <Body hidden={isPoster}>
           <Title>{item.name}</Title>

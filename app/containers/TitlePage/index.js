@@ -8,17 +8,14 @@ import Box from 'components/Box';
 import MoviesList from 'components/MoviesList';
 import PageGroup from 'components/PageGroup';
 import PageSection from 'components/PageSection';
-import RelatedNews from 'components/RelatedNews';
 import TitleCast from 'components/TitleCast';
-import TitleDetails from 'components/TitleDetails';
+import TitleFact from 'components/TitleFact';
 import TitleHero from 'components/TitleHero';
 import TitleMetaData from 'components/TitleMetaData';
 import TitlePhotos from 'components/TitlePhotos';
 import TitleReviews from 'components/TitleReviews';
 import TitleSimilar from 'components/TitleSimilar';
-import TitleStoryline from 'components/TitleStoryline';
 import TitleVideos from 'components/TitleVideos';
-import TitleFact from 'components/TitleFact';
 import * as appActions from 'containers/App/actions';
 import * as appSelectors from 'containers/App/selectors';
 import PropTypes from 'prop-types';
@@ -26,9 +23,9 @@ import React, { memo, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
+import { animateScroll as scroll } from 'react-scroll';
 import { bindActionCreators, compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { animateScroll as scroll } from 'react-scroll';
 import { getYearAtReleaseDate } from 'services/date';
 import { getSearchParam } from 'services/url';
 import { useInjectReducer } from 'utils/injectReducer';
@@ -127,29 +124,8 @@ export function TitlePage({
                 <PageSection title="More like this" seeAllLink="/">
                   <TitleSimilar titleSimilar={titleSimilar} />
                 </PageSection>
-                <PageSection title="Storyline" seeAllLink="/">
-                  <TitleStoryline titleDetails={titleDetails} />
-                </PageSection>
-                <PageSection title="Did you know" seeAllLink="/">
-                  <Box />
-                </PageSection>
                 <PageSection title="User reviews" seeAllLink="/">
                   <TitleReviews titleReviews={titleReviews} />
-                </PageSection>
-                <PageSection title="FQA" seeAllLink="/">
-                  <Box />
-                </PageSection>
-                <PageSection title="Details" seeAllLink="/">
-                  <TitleDetails titleDetails={titleDetails} />
-                </PageSection>
-                <PageSection title="Box office" seeAllLink="/">
-                  <Box />
-                </PageSection>
-                <PageSection title="Technical Specs" seeAllLink="/">
-                  <Box />
-                </PageSection>
-                <PageSection title="Related news" seeAllLink="/">
-                  <RelatedNews />
                 </PageSection>
               </PageGroup>
             </Col>
