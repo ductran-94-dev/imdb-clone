@@ -2,11 +2,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Link = styled(RouterLink)`
-  text-decoration: none;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 0.5rem;
 
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
+  text-decoration: none;
 
   &:hover {
     text-decoration: none;

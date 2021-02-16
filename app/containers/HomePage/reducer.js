@@ -153,7 +153,7 @@ function reduceFetchEditorsPicks(response, draft) {
 
 function reduceFetchBornToday(response, draft) {
   draft.bornToday = {
-    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
+    items: response.results.filter((_, idx) => idx < 4),
   };
 }
 

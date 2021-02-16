@@ -11,7 +11,7 @@ import messages from './messages';
 
 function Header() {
   return (
-    <Wrapper variant="dark" expand="md">
+    <Wrapper expand="md">
       <Container>
         <LogoLink href="/">
           <FormattedMessage {...messages.imdb} />
@@ -30,11 +30,7 @@ function Header() {
               flexShrink: 1,
             }}
           >
-            <FormControl
-              type="text"
-              placeholder="Search IMDb"
-              className="border-0"
-            />
+            <FormControl type="text" placeholder="Search IMDb" />
           </Form>
           <Nav className="ml-auto">
             <Nav.Link to="/imdb_pro" as={NavLink}>

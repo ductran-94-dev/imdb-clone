@@ -49,7 +49,7 @@ export function* fetchEditorsPicks() {
   yield fetchEntity(request, requestURL, homeActions.editorsPicks);
 }
 export function* fetchBornToday() {
-  const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=5`;
+  const requestURL = `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US&page=1`;
   yield fetchEntity(request, requestURL, homeActions.bornToday);
 }
 export function* fetchTopNews() {

@@ -1,10 +1,11 @@
 const theme = {
   colors: {
-    main: '#f5c518',
+    // main: '#f5c518',
+    main: '#385898',
     dark: '#141414',
     darker: '#000000',
-    light: '#546e7a',
-    lighter: '#b0bec5',
+    light: '#ffffff',
+    lighter: '#fafafa',
     text: '#141414',
     link: '#141414',
     linkHover: '#444444',

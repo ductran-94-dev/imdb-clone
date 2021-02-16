@@ -18,6 +18,7 @@ import * as appSelectors from 'containers/App/selectors';
 
 import { Container } from 'react-bootstrap';
 import MoviesList from 'components/MoviesList';
+import CastList from 'components/CastList';
 import PageGroup from 'components/PageGroup';
 import PageSection from 'components/PageSection';
 
@@ -173,11 +174,11 @@ export function HomePage({
             />
           </PageSection>
           <PageSection title="Born today">
-            <MoviesList
+            <CastList
               {...{
                 loading: false,
                 error: false,
-                movies: bornToday,
+                cast: bornToday,
               }}
             />
           </PageSection>
