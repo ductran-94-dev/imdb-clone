@@ -26,6 +26,7 @@ import * as homeActions from './actions';
 import * as homeSelectors from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import Wrapper from './Wrapper';
 
 const key = 'home';
 
@@ -83,124 +84,126 @@ export function HomePage({
         />
       </Helmet>
       <Container>
-        <PageGroup title="Featured today">
-          <PageSection title="">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: featuredToday,
-              }}
-            />
-          </PageSection>
-        </PageGroup>
-        <PageGroup title="What to watch">
-          <PageSection title="Top picks">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: topPicks,
-              }}
-            />
-          </PageSection>
-          <PageSection title="From your Watchlist">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: watchlist,
-              }}
-            />
-          </PageSection>
-          <PageSection title="Fan favourites">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: fanFavourites,
-              }}
-            />
-          </PageSection>
-          <PageSection title="More to watch">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: moveToWatch,
-              }}
-            />
-          </PageSection>
-        </PageGroup>
-        <PageGroup title="Exclusive videos">
-          <PageSection title="IMDb Originals">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: imdbOriginals,
-              }}
-            />
-          </PageSection>
-        </PageGroup>
-        <PageGroup title="Explore what’s streaming">
-          <PageSection title="">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: upcomingMovies,
-              }}
-            />
-          </PageSection>
-          <PageSection title="">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: popularMovies,
-              }}
-            />
-          </PageSection>
-        </PageGroup>
-        <PageGroup title="More to explore">
-          <PageSection title="Editors’ picks" seeAllLink="/editors_picks">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: editorsPicks,
-              }}
-            />
-          </PageSection>
-          <PageSection title="Born today">
-            <CastList
-              {...{
-                loading: false,
-                error: false,
-                cast: bornToday,
-              }}
-            />
-          </PageSection>
-          <PageSection title="Top news">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: topNews,
-              }}
-            />
-          </PageSection>
-          <PageSection title="Recently viewed">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: recentlyViewed,
-              }}
-            />
-          </PageSection>
-        </PageGroup>
+        <Wrapper>
+          <PageGroup title="Featured today">
+            <PageSection title="">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: featuredToday,
+                }}
+              />
+            </PageSection>
+          </PageGroup>
+          <PageGroup title="What to watch">
+            <PageSection title="Top picks">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: topPicks,
+                }}
+              />
+            </PageSection>
+            <PageSection title="From your Watchlist">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: watchlist,
+                }}
+              />
+            </PageSection>
+            <PageSection title="Fan favourites">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: fanFavourites,
+                }}
+              />
+            </PageSection>
+            <PageSection title="More to watch">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: moveToWatch,
+                }}
+              />
+            </PageSection>
+          </PageGroup>
+          <PageGroup title="Exclusive videos">
+            <PageSection title="IMDb Originals">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: imdbOriginals,
+                }}
+              />
+            </PageSection>
+          </PageGroup>
+          <PageGroup title="Explore what’s streaming">
+            <PageSection title="">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: upcomingMovies,
+                }}
+              />
+            </PageSection>
+            <PageSection title="">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: popularMovies,
+                }}
+              />
+            </PageSection>
+          </PageGroup>
+          <PageGroup title="More to explore">
+            <PageSection title="Editors’ picks" seeAllLink="/editors_picks">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: editorsPicks,
+                }}
+              />
+            </PageSection>
+            <PageSection title="Born today">
+              <CastList
+                {...{
+                  loading: false,
+                  error: false,
+                  cast: bornToday,
+                }}
+              />
+            </PageSection>
+            <PageSection title="Top news">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: topNews,
+                }}
+              />
+            </PageSection>
+            <PageSection title="Recently viewed">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: recentlyViewed,
+                }}
+              />
+            </PageSection>
+          </PageGroup>
+        </Wrapper>
       </Container>
     </article>
   );

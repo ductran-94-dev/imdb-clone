@@ -3,11 +3,9 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: var(--app-gap-width);
+  grid-gap: calc(var(--app-gap-width) * 2);
 
-  @media (min-width: ${props => props.theme.breakpoints.lg}px) {
-    grid-template-columns: 70% 30%;
-  }
+  padding-top: calc(var(--app-gap-width) * 2);
 `;
 
 export default Wrapper;

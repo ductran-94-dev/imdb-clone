@@ -6,7 +6,7 @@
 
 import PropTypes from 'prop-types';
 import React, { memo, useEffect } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { animateScroll as scroll } from 'react-scroll';
@@ -38,6 +38,7 @@ import TitlePhotos from './TitlePhotos';
 import TitleReviews from './TitleReviews';
 import TitleSimilar from './TitleSimilar';
 import TitleVideos from './TitleVideos';
+import Wrapper from './Wrapper';
 
 export function TitlePage({
   titleId,
@@ -100,78 +101,86 @@ export function TitlePage({
         <meta name="description" content={titleDetails.overview} />
       </Helmet>
       <Container>
-        <TitleFact
-          titleDetails={titleDetails}
-          titleCast={titleCast}
-          titleCrew={titleCrew}
-        />
-        <Row>
-          <Col>
-            <TitleMetaData hidden titleDetails={titleDetails} />
-            <TitleHero hidden titleDetails={titleDetails} />
-            <PageGroup>
-              <PageSection title="Videos" seeAllLink="/">
-                <TitleVideos titleVideos={titleVideos} />
+        <Wrapper>
+          <PageGroup>
+            {1 === 0 && (
+              <PageSection>
+                <TitleMetaData titleDetails={titleDetails} />
               </PageSection>
-              <PageSection title="Photos" seeAllLink="/">
-                <TitlePhotos titlePhotos={titlePhotos} />
+            )}
+            {1 === 0 && (
+              <PageSection>
+                <TitleHero titleDetails={titleDetails} />
               </PageSection>
-              <PageSection
-                title="Cast"
-                subtitle="Cast overview, first billed only"
-                seeAllLink="/"
-              >
-                <TitleCast titleCast={titleCast} />
-              </PageSection>
-              <PageSection title="More like this" seeAllLink="/">
-                <TitleSimilar
-                  loading={false}
-                  error={false}
-                  titleSimilar={titleSimilar}
-                />
-              </PageSection>
-              <PageSection title="User reviews" seeAllLink="/">
-                <TitleReviews
-                  loading={false}
-                  error={false}
-                  titleReviews={titleReviews}
-                />
-              </PageSection>
-            </PageGroup>
-          </Col>
-          <Col sm={4} className="d-none d-lg-block">
-            <PageGroup title="More to explore">
-              <PageSection title="">
-                <Box />
-              </PageSection>
-              <PageSection
-                title="User lists"
-                subtitle="Related lists from IMDb users"
-                seeAllLink="/"
-              >
-                <Box />
-              </PageSection>
-              <PageSection
-                title="User polls"
-                subtitle="Related poll from IMDb users"
-                seeAllLink="/"
-              >
-                <Box />
-              </PageSection>
-            </PageGroup>
-          </Col>
-        </Row>
-        <PageGroup title="">
-          <PageSection title="Recently viewed">
-            <MoviesList
-              {...{
-                loading: false,
-                error: false,
-                movies: recentlyViewed,
-              }}
-            />
-          </PageSection>
-        </PageGroup>
+            )}
+            <PageSection>
+              <TitleFact
+                titleDetails={titleDetails}
+                titleCast={titleCast}
+                titleCrew={titleCrew}
+              />
+            </PageSection>
+          </PageGroup>
+          <PageGroup>
+            <PageSection title="Videos" seeAllLink="/">
+              <TitleVideos titleVideos={titleVideos} />
+            </PageSection>
+            <PageSection title="Photos" seeAllLink="/">
+              <TitlePhotos titlePhotos={titlePhotos} />
+            </PageSection>
+            <PageSection
+              title="Cast"
+              subtitle="Cast overview, first billed only"
+              seeAllLink="/"
+            >
+              <TitleCast titleCast={titleCast} />
+            </PageSection>
+            <PageSection title="More like this" seeAllLink="/">
+              <TitleSimilar
+                loading={false}
+                error={false}
+                titleSimilar={titleSimilar}
+              />
+            </PageSection>
+            <PageSection title="User reviews" seeAllLink="/">
+              <TitleReviews
+                loading={false}
+                error={false}
+                titleReviews={titleReviews}
+              />
+            </PageSection>
+          </PageGroup>
+          <PageGroup title="More to explore">
+            <PageSection title="">
+              <Box />
+            </PageSection>
+            <PageSection
+              title="User lists"
+              subtitle="Related lists from IMDb users"
+              seeAllLink="/"
+            >
+              <Box />
+            </PageSection>
+            <PageSection
+              title="User polls"
+              subtitle="Related poll from IMDb users"
+              seeAllLink="/"
+            >
+              <Box />
+            </PageSection>
+          </PageGroup>
+          <PageGroup title="">
+            <PageSection title="Recently viewed">
+              <MoviesList
+                {...{
+                  loading: false,
+                  error: false,
+                  movies: recentlyViewed,
+                }}
+              />
+            </PageSection>
+          </PageGroup>
+        </Wrapper>
       </Container>
     </div>
   );
