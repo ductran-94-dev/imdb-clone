@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Text = styled.p`
-  color: var(--app-primary-text);
+  color: var(--app-pallete-text-primary);
 `;
 
 export default Text;

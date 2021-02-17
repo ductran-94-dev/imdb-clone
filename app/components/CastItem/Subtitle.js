@@ -6,7 +6,7 @@ const Subtitle = styled.h6`
 
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--app-secondary-text);
+  color: var(--app-pallete-text-secondary);
 `;
 
 export default Subtitle;

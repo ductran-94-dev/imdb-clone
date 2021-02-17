@@ -10,7 +10,7 @@ const InlineList = styled.ul`
   margin: 0;
   margin-left: 1rem;
 
-  color: var(--app-secondary-text);
+  color: var(--app-pallete-secondary-text);
 `;
 
 export default InlineList;

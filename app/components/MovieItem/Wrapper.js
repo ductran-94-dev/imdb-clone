@@ -7,7 +7,9 @@ const Wrapper = styled.div`
 
   position: relative;
   overflow: hidden;
-  background-color: var(--app-light);
+
+  padding: 1rem;
+  background-color: var(--app-pallete-white);
 `;
 
 export default Wrapper;

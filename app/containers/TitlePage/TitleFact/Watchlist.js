@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 
 const Watchlist = styled(Button)`
   text-align: left;
-  background-color: var(--app-primary);
-  border-color: var(--app-primary);
+  background-color: var(--app-pallete-primary);
+  border-color: var(--app-pallete-primary);
 
   &:hover,
   &:link,

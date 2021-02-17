@@ -3,17 +3,17 @@ import { ListGroupItem as NormalListGroupItem } from 'react-bootstrap';
 
 const ListGroupItem = styled(NormalListGroupItem)`
   background-color: transparent;
-  border-color: var(--app-border-color);
+  border-color: var(--app-pallete-border-primary);
 
   padding-left: 0;
   padding-right: 0;
 
   strong {
-    color: var(--app-primary-text);
+    color: var(--app-pallete-primary-text);
   }
 
   a {
-    color: var(--app-secondary-text);
+    color: var(--app-pallete-secondary-text);
   }
 `;
 

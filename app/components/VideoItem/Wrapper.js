@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   ${mixins.borderRadius};
 
   padding: 1rem;
-  background-color: var(--app-light);
+  background-color: var(--app-pallete-white);
 
   iframe {
     width: 100%;

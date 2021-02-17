@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const mixins = {
   boxShadow: css`
-    box-shadow: 0 10px 30px -15px var(--app-primary-shadow);
+    box-shadow: 0 10px 30px -15px var(--app-pallete-shadow-primary);
   `,
 
   borderRadius: css`

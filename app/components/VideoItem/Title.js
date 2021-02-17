@@ -6,7 +6,7 @@ const Title = styled.h3`
 
   margin: 0;
 
-  color: var(--app-primary-text);
+  color: var(--app-pallete-text-primary);
   font-size: 1rem;
 `;
 

@@ -19,7 +19,7 @@ const Watchlist = styled(NormalButton)`
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 
-  color: var(--app-light);
+  color: var(--app-pallete-white);
   background-color: rgba(0, 0, 0, 0.65);
   font-size: 2rem;
 `;

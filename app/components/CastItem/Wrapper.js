@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   grid-column-gap: 0.75rem;
 
   padding: 0.75rem;
-  background-color: var(--app-light);
+  background-color: var(--app-pallete-white);
 `;
 
 export default Wrapper;

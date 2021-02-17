@@ -9,7 +9,7 @@ const Figure = styled.figure`
   height: 0;
   overflow: hidden;
 
-  background-color: var(--app-secondary);
+  background-color: var(--app-pallete-secondary);
 `;
 
 export default Figure;

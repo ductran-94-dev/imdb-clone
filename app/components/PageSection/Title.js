@@ -18,7 +18,7 @@ const Title = styled.a`
     height: 100%;
     width: 4px;
 
-    background: var(--app-primary);
+    background: var(--app-pallete-primary);
     border-radius: 4px;
   }
 
@@ -27,11 +27,11 @@ const Title = styled.a`
   }
 
   &:hover {
-    color: var(--app-primary-text);
+    color: var(--app-pallete-text-primary);
     text-decoration: none;
 
     span {
-      color: var(--app-primary);
+      color: var(--app-pallete-primary);
     }
   }
 `;

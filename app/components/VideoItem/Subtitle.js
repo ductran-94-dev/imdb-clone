@@ -7,7 +7,7 @@ const Subtitle = styled.h3`
   margin: 0;
   margin-top: 3px;
 
-  color: var(--app-secondary-text);
+  color: var(--app-pallete-text-secondary);
   font-size: 0.8rem;
 `;
 

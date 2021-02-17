@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import NavbarBrand from 'react-bootstrap/NavbarBrand';
 
 const LogoLink = styled(NavbarBrand)`
-  color: var(--app-primary) !important;
+  color: var(--app-pallete-primary) !important;
   font-weight: bold;
   letter-spacing: 2px;
 
