@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     --app-pallete-text-disabled: ${props => props.theme.pallete.text.disabled};
     --app-pallete-text-hint: ${props => props.theme.pallete.text.hint};
     
-    --app-pallete-border-primary: ${props => props.theme.pallete.grey[900]};
+    --app-pallete-border-primary: ${props => props.theme.pallete.grey[400]};
     --app-pallete-shadow-primary: ${props => props.theme.pallete.grey[400]};
 
     --app-gap-width: ${props => props.theme.mixins.gutters};
