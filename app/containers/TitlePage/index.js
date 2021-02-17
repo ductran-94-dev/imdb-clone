@@ -4,20 +4,6 @@
  *
  */
 
-import Box from 'components/Box';
-import MoviesList from 'components/MoviesList';
-import PageGroup from 'components/PageGroup';
-import PageSection from 'components/PageSection';
-import TitleCast from 'components/TitleCast';
-import TitleFact from 'components/TitleFact';
-import TitleHero from 'components/TitleHero';
-import TitleMetaData from 'components/TitleMetaData';
-import TitlePhotos from 'components/TitlePhotos';
-import TitleReviews from 'components/TitleReviews';
-import TitleSimilar from 'components/TitleSimilar';
-import TitleVideos from 'components/TitleVideos';
-import * as appActions from 'containers/App/actions';
-import * as appSelectors from 'containers/App/selectors';
 import PropTypes from 'prop-types';
 import React, { memo, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -26,14 +12,32 @@ import { connect } from 'react-redux';
 import { animateScroll as scroll } from 'react-scroll';
 import { bindActionCreators, compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { getYearAtReleaseDate } from 'services/date';
-import { getSearchParam } from 'services/url';
+
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
+import { getYearAtReleaseDate } from 'services/date';
+import { getSearchParam } from 'services/url';
+
+import Box from 'components/Box';
+import MoviesList from 'components/MoviesList';
+import PageGroup from 'components/PageGroup';
+import PageSection from 'components/PageSection';
+
+import * as appActions from 'containers/App/actions';
+import * as appSelectors from 'containers/App/selectors';
+import * as titleSelectors from './selectors';
 import * as titleActions from './actions';
 import reducer from './reducer';
 import saga from './saga';
-import * as titleSelectors from './selectors';
+
+import TitleCast from './TitleCast';
+import TitleFact from './TitleFact';
+import TitleHero from './TitleHero';
+import TitleMetaData from './TitleMetaData';
+import TitlePhotos from './TitlePhotos';
+import TitleReviews from './TitleReviews';
+import TitleSimilar from './TitleSimilar';
+import TitleVideos from './TitleVideos';
 
 export function TitlePage({
   titleId,
