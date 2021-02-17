@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   position: relative;
 
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 30% 70%;
   grid-column-gap: 0.75rem;
 
   padding: 0.75rem;

@@ -3,6 +3,8 @@ import mixins from 'utils/mixins';
 
 const Title = styled.h3`
   ${mixins.textTruncate};
+
+  width: 100%;
   margin: 0;
 
   font-size: 1rem;

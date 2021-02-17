@@ -12,6 +12,14 @@ const List = styled.div`
   @media (min-width: ${props => props.theme.breakpoints.md}px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  @media (min-width: ${props => props.theme.breakpoints.lg}px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.lg}px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 `;
 
 export default List;

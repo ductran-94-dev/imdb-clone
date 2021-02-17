@@ -25,7 +25,7 @@ const List = styled.div`
     }
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.lg}px) {
+  @media (min-width: ${props => props.theme.breakpoints.md}px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
 
     & > div:nth-child(4) {
@@ -33,10 +33,18 @@ const List = styled.div`
     }
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.xl}px) {
+  @media (min-width: ${props => props.theme.breakpoints.lg}px) {
     grid-template-columns: repeat(5, minmax(0, 1fr));
 
     & > div:nth-child(5) {
+      display: block;
+    }
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints.xl}px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+
+    & > div:nth-child(6) {
       display: block;
     }
   }
