@@ -36,7 +36,7 @@ function TitleSimilar({ loading, error, titleSimilar }) {
       <Wrapper>
         <List>
           {titleSimilar.map(movie => (
-            <MovieItem key={`item-${movie.id}`} movie={movie} />
+            <MovieItem key={`titleSimilar-${movie.id}`} movie={movie} />
           ))}
         </List>
       </Wrapper>

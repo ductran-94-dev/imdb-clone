@@ -101,6 +101,6 @@ function reduceFetchMovieSimilar(response, draft) {
 
 function reduceFetchMovieReviews(response, draft) {
   draft.titleReviews = {
-    items: response.results.filter((_, idx) => idx < 1),
+    items: response.results.filter((_, idx) => idx < 2),
   };
 }
