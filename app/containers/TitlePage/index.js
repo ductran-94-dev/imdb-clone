@@ -71,10 +71,10 @@ export function TitlePage({
   const getTitleId = () => getSearchParam(location, 'id');
 
   useEffect(() => {
-    scroll.scrollToTop({
-      smooth: true,
-      delay: 500,
-    });
+    // scroll.scrollToTop({
+    //   smooth: true,
+    //   delay: 500,
+    // });
 
     if (titleId) fetchTitleContent();
 
@@ -120,7 +120,11 @@ export function TitlePage({
                 <TitleCast titleCast={titleCast} />
               </PageSection>
               <PageSection title="More like this" seeAllLink="/">
-                <TitleSimilar titleSimilar={titleSimilar} />
+                <TitleSimilar
+                  loading={false}
+                  error={false}
+                  titleSimilar={titleSimilar}
+                />
               </PageSection>
               <PageSection title="User reviews" seeAllLink="/">
                 <TitleReviews titleReviews={titleReviews} />

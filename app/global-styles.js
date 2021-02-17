@@ -15,7 +15,8 @@ const GlobalStyle = createGlobalStyle`
     --app-primary-link: ${props => props.theme.colors.textPrimary};
     --app-secondary-link: ${props => props.theme.colors.textSecondary};
     --app-primary-shadow: ${props => props.theme.colors.shadowPrimary};
-    --app-border-color: rgba(176, 190, 197, 0.5);
+    --app-border-color: ${props => props.theme.colors.grey};
+    --app-gap-width: ${props => props.theme.colors.gapWidth};
   }
 
   html,
