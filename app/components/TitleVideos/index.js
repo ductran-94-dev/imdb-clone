@@ -6,20 +6,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
-import Box from 'components/Box';
+import VideoItem from 'components/VideoItem';
+import Wrapper from './Wrapper';
+import List from './List';
 
 function TitleVideos({ titleVideos }) {
   return (
-    <Row>
-      {titleVideos &&
-        titleVideos.map(item => (
-          <Col key={`titleVideo-${item.id}`} sm={6}>
-            <Box />
-            <h6 className="mt-3">{item.name}</h6>
-          </Col>
-        ))}
-    </Row>
+    <Wrapper>
+      <List>
+        {titleVideos &&
+          titleVideos.map(item => (
+            <VideoItem key={`titleVideo-${item.id}`} item={item} />
+          ))}
+      </List>
+    </Wrapper>
   );
 }
 
