@@ -4,12 +4,13 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { push } from 'connected-react-router';
+import debounce from 'lodash/debounce';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { getSearchParam } from 'services/url';
@@ -40,13 +41,16 @@ export function SearchBar({ dispatch, location }) {
     setKeywork(value);
   };
 
-  const onChangeLocation = value => {
-    if (!value) {
-      dispatch(push('/'));
-    } else {
-      dispatch(push(`/search?q=${value}`));
-    }
-  };
+  const onChangeLocation = useCallback(
+    debounce(query => {
+      if (!query) {
+        dispatch(push('/'));
+      } else {
+        dispatch(push(`/search?q=${query}`));
+      }
+    }, 300),
+    [],
+  );
 
   return (
     <Form onSubmit={onSubmitForm}>
