@@ -6,10 +6,17 @@ import { initialState } from './reducer';
  */
 
 const selectSearchBarDomain = state => state.searchBar || initialState;
+const selectRouter = state => state.router;
 
 /**
  * Other specific selectors
  */
+
+const makeSelectLocation = () =>
+  createSelector(
+    selectRouter,
+    routerState => routerState.location,
+  );
 
 /**
  * Default selector used by SearchBar
@@ -22,4 +29,4 @@ const makeSelectSearchBar = () =>
   );
 
 export default makeSelectSearchBar;
-export { selectSearchBarDomain };
+export { makeSelectLocation };

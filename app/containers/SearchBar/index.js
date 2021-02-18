@@ -5,33 +5,38 @@
  */
 
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { push } from 'connected-react-router';
 
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectSearchBar from './selectors';
+import { getSearchParam } from 'services/url';
+
+import * as selectors from './selectors';
 import reducer from './reducer';
 import Form from './Form';
 import FormControl from './FormControl';
 
-export function SearchBar() {
+export function SearchBar({ dispatch, location }) {
   useInjectReducer({
     key: 'searchBar',
     reducer,
   });
-  const [keywork, setKeywork] = useState('');
+  const initKeyword = getSearchParam(location, 'q') || '';
+  const [keywork, setKeywork] = useState(initKeyword);
 
   const onSubmitForm = e => {
     e.preventDefault();
 
-    // eslint-disable-next-line no-console
-    console.log('haha', keywork);
+    dispatch(push(`/search?q=${keywork}`));
   };
 
   const handleChange = e => {
-    setKeywork(e.target.value);
+    const { value } = e.target;
+
+    setKeywork(value);
   };
 
   return (
@@ -46,10 +51,13 @@ export function SearchBar() {
   );
 }
 
-SearchBar.propTypes = {};
+SearchBar.propTypes = {
+  location: PropTypes.object,
+  dispatch: PropTypes.func,
+};
 
 const mapStateToProps = createStructuredSelector({
-  searchBar: makeSelectSearchBar(),
+  location: selectors.makeSelectLocation(),
 });
 
 function mapDispatchToProps(dispatch) {
