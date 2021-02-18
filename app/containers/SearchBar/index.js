@@ -30,13 +30,22 @@ export function SearchBar({ dispatch, location }) {
   const onSubmitForm = e => {
     e.preventDefault();
 
-    dispatch(push(`/search?q=${keywork}`));
+    onChangeLocation(keywork);
   };
 
   const handleChange = e => {
     const { value } = e.target;
 
+    onChangeLocation(value);
     setKeywork(value);
+  };
+
+  const onChangeLocation = value => {
+    if (!value) {
+      dispatch(push('/'));
+    } else {
+      dispatch(push(`/search?q=${value}`));
+    }
   };
 
   return (
