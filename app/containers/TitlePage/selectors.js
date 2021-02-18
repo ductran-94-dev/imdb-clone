@@ -6,10 +6,24 @@ import { initialState } from './reducer';
  */
 
 const selectTitlePageDomain = state => state.titlePage || initialState;
+const selectRouter = state => state.router;
+const selectGlobal = state => state.global || initialState;
 
 /**
  * Other specific selectors
  */
+
+const makeSelectLocation = () =>
+  createSelector(
+    selectRouter,
+    routerState => routerState.location,
+  );
+
+const makeSelectRecentlyViewed = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.recentlyViewed.items,
+  );
 
 /**
  * Default selector used by TitlePage
@@ -79,4 +93,6 @@ export {
   makeSelectMovieCrew,
   makeSelectMovieSimilar,
   makeSelectMovieReviews,
+  makeSelectLocation,
+  makeSelectRecentlyViewed,
 };

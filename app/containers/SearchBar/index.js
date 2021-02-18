@@ -25,8 +25,13 @@ export function SearchBar() {
 
   const onSubmitForm = e => {
     e.preventDefault();
-    // eslint-disable-next-line no-alert
-    alert(`onSubmitForm: ${keywork}`);
+
+    // eslint-disable-next-line no-console
+    console.log('haha', keywork);
+  };
+
+  const handleChange = e => {
+    setKeywork(e.target.value);
   };
 
   return (
@@ -35,8 +40,8 @@ export function SearchBar() {
         type="text"
         placeholder="Search IMDb"
         value={keywork}
-        onChange={e => setKeywork(e.target.value)}
-      />{' '}
+        onChange={handleChange}
+      />
     </Form>
   );
 }

@@ -24,8 +24,7 @@ import PageGroup from 'components/PageGroup';
 import PageSection from 'components/PageSection';
 
 import * as appActions from 'containers/App/actions';
-import * as appSelectors from 'containers/App/selectors';
-import * as titleSelectors from './selectors';
+import * as selectors from './selectors';
 import * as titleActions from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -208,16 +207,16 @@ TitlePage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  titleId: titleSelectors.makeSelectMovieId(),
-  titleDetails: titleSelectors.makeSelectMovieDetails(),
-  titlePhotos: titleSelectors.makeSelectMoviePhotos(),
-  titleVideos: titleSelectors.makeSelectMovieVideos(),
-  titleCast: titleSelectors.makeSelectMovieCast(),
-  titleCrew: titleSelectors.makeSelectMovieCrew(),
-  titleSimilar: titleSelectors.makeSelectMovieSimilar(),
-  titleReviews: titleSelectors.makeSelectMovieReviews(),
-  recentlyViewed: appSelectors.makeSelectRecentlyViewed(),
-  location: appSelectors.makeSelectLocation(),
+  titleId: selectors.makeSelectMovieId(),
+  titleDetails: selectors.makeSelectMovieDetails(),
+  titlePhotos: selectors.makeSelectMoviePhotos(),
+  titleVideos: selectors.makeSelectMovieVideos(),
+  titleCast: selectors.makeSelectMovieCast(),
+  titleCrew: selectors.makeSelectMovieCrew(),
+  titleSimilar: selectors.makeSelectMovieSimilar(),
+  titleReviews: selectors.makeSelectMovieReviews(),
+  recentlyViewed: selectors.makeSelectRecentlyViewed(),
+  location: selectors.makeSelectLocation(),
 });
 
 function mapDispatchToProps(dispatch) {
