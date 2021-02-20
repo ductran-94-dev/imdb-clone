@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 
 import ReviewItem from 'components/ReviewItem';
 import LoadingIndicator from 'components/LoadingIndicator';
+import Grid from 'components/Grid';
 
-import List from './List';
 import Wrapper from './Wrapper';
 
 function TitleReviews({ loading, error, titleReviews }) {
@@ -35,11 +35,11 @@ function TitleReviews({ loading, error, titleReviews }) {
   if (!!titleReviews && titleReviews !== false) {
     return (
       <Wrapper>
-        <List>
+        <Grid xs={1} sm={2}>
           {titleReviews.map(item => (
             <ReviewItem key={`titleReview-${item.id}`} item={item} />
           ))}
-        </List>
+        </Grid>
       </Wrapper>
     );
   }

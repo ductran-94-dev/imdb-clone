@@ -8,18 +8,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CastItem from 'components/CastItem';
+import Grid from 'components/Grid';
+
 import Wrapper from './Wrapper';
-import List from './List';
 
 function TitleCast({ titleCast }) {
   if (titleCast) {
     return (
       <Wrapper>
-        <List>
+        <Grid xs={1} sm={2} md={3}>
           {titleCast.map(item => (
             <CastItem key={`titleCast-${item.id}`} item={item} />
           ))}
-        </List>
+        </Grid>
       </Wrapper>
     );
   }

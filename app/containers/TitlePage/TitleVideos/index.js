@@ -7,18 +7,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VideoItem from 'components/VideoItem';
+import Grid from 'components/Grid';
 import Wrapper from './Wrapper';
-import List from './List';
 
 function TitleVideos({ titleVideos }) {
   return (
     <Wrapper>
-      <List>
+      <Grid sm={2}>
         {titleVideos &&
           titleVideos.map(item => (
             <VideoItem key={`titleVideo-${item.id}`} item={item} />
           ))}
-      </List>
+      </Grid>
     </Wrapper>
   );
 }

@@ -8,7 +8,7 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import MovieItem from 'components/MovieItem';
 import PropTypes from 'prop-types';
 import React from 'react';
-import List from './List';
+import Grid from './Grid';
 import Wrapper from './Wrapper';
 
 function MoviesList({ loading, error, movies }) {
@@ -33,11 +33,11 @@ function MoviesList({ loading, error, movies }) {
   if (!!movies && movies !== false) {
     return (
       <Wrapper>
-        <List>
+        <Grid xs={2} sm={3} md={4} lg={5} xl={6}>
           {movies.map(movie => (
-            <MovieItem key={`item-${movie.id}`} movie={movie} />
+            <MovieItem key={`movie-${movie.id}`} movie={movie} />
           ))}
-        </List>
+        </Grid>
       </Wrapper>
     );
   }

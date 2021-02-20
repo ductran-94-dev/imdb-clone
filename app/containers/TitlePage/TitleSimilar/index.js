@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 
 import LoadingIndicator from 'components/LoadingIndicator';
 import MovieItem from 'components/MovieItem';
-import List from './List';
+import Grid from 'components/Grid';
+
 import Wrapper from './Wrapper';
 
 function TitleSimilar({ loading, error, titleSimilar }) {
@@ -34,11 +35,11 @@ function TitleSimilar({ loading, error, titleSimilar }) {
   if (!!titleSimilar && titleSimilar !== false) {
     return (
       <Wrapper>
-        <List>
+        <Grid xs={2} sm={3} md={4} lg={3} xl={4}>
           {titleSimilar.map(movie => (
             <MovieItem key={`titleSimilar-${movie.id}`} movie={movie} />
           ))}
-        </List>
+        </Grid>
       </Wrapper>
     );
   }
