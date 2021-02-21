@@ -13,75 +13,84 @@ const makeSelectUsername = () =>
     homeState => homeState.username,
   );
 
-const makeSelectUpcomingMovies = () =>
+const makeSelectAsyncUpcomingMovies = () =>
   createSelector(
     selectHome,
-    homeState => homeState.upcomingMovies.items,
+    homeState => homeState.upcomingMovies,
   );
 
-const makeSelectPopularMovies = () =>
+const makeSelectAsyncPopularMovies = () =>
   createSelector(
     selectHome,
-    homeState => homeState.popularMovies.items,
+    homeState => homeState.popularMovies,
   );
-const makeSelectFeaturedToday = () =>
+
+const makeSelectAsyncFeaturedToday = () =>
   createSelector(
     selectHome,
-    homeState => homeState.featuredToday.items,
+    homeState => homeState.featuredToday,
   );
-const makeSelectTopPicks = () =>
+
+const makeSelectAsyncTopPicks = () =>
   createSelector(
     selectHome,
-    homeState => homeState.topPicks.items,
+    homeState => homeState.topPicks,
   );
-const makeSelectWatchlist = () =>
+
+const makeSelectAsyncWatchlist = () =>
   createSelector(
     selectHome,
-    homeState => homeState.watchlist.items,
+    homeState => homeState.watchlist,
   );
-const makeSelectFanFavourites = () =>
+
+const makeSelectAsyncFanFavourites = () =>
   createSelector(
     selectHome,
-    homeState => homeState.fanFavourites.items,
+    homeState => homeState.fanFavourites,
   );
-const makeSelectMoveToWatch = () =>
+
+const makeSelectAsyncMoveToWatch = () =>
   createSelector(
     selectHome,
-    homeState => homeState.moveToWatch.items,
+    homeState => homeState.moveToWatch,
   );
-const makeSelectImdbOriginals = () =>
+
+const makeSelectAsyncImdbOriginals = () =>
   createSelector(
     selectHome,
-    homeState => homeState.imdbOriginals.items,
+    homeState => homeState.imdbOriginals,
   );
-const makeSelectEditorsPicks = () =>
+
+const makeSelectAsyncEditorsPicks = () =>
   createSelector(
     selectHome,
-    homeState => homeState.editorsPicks.items,
+    homeState => homeState.editorsPicks,
   );
-const makeSelectBornToday = () =>
+
+const makeSelectAsyncBornToday = () =>
   createSelector(
     selectHome,
-    homeState => homeState.bornToday.items,
+    homeState => homeState.bornToday,
   );
-const makeSelectTopNews = () =>
+
+const makeSelectAsyncTopNews = () =>
   createSelector(
     selectHome,
-    homeState => homeState.topNews.items,
+    homeState => homeState.topNews,
   );
 
 export {
   selectHome,
   makeSelectUsername,
-  makeSelectUpcomingMovies,
-  makeSelectPopularMovies,
-  makeSelectFeaturedToday,
-  makeSelectTopPicks,
-  makeSelectWatchlist,
-  makeSelectFanFavourites,
-  makeSelectMoveToWatch,
-  makeSelectImdbOriginals,
-  makeSelectEditorsPicks,
-  makeSelectBornToday,
-  makeSelectTopNews,
+  makeSelectAsyncUpcomingMovies,
+  makeSelectAsyncPopularMovies,
+  makeSelectAsyncFeaturedToday,
+  makeSelectAsyncTopPicks,
+  makeSelectAsyncWatchlist,
+  makeSelectAsyncFanFavourites,
+  makeSelectAsyncMoveToWatch,
+  makeSelectAsyncImdbOriginals,
+  makeSelectAsyncEditorsPicks,
+  makeSelectAsyncBornToday,
+  makeSelectAsyncTopNews,
 };

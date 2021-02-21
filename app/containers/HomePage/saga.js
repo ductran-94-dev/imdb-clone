@@ -3,7 +3,7 @@
  */
 
 import { API_KEY } from 'containers/App/constants';
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest, delay } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
 import request from 'utils/request';
 import { fetchEntity } from 'utils/sagaCreator';
@@ -22,42 +22,52 @@ export function* fetchPopularMovies() {
 
 export function* fetchFeaturedToday() {
   const requestURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=2`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.featuredToday);
 }
 export function* fetchTopPicks() {
   const requestURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=3`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.topPicks);
 }
 export function* fetchWatchlist() {
   const requestURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=4`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.watchlist);
 }
 export function* fetchFanFavourites() {
   const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.fanFavourites);
 }
 export function* fetchMoveToWatch() {
   const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=2`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.moveToWatch);
 }
 export function* fetchImdbOriginals() {
   const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=3`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.imdbOriginals);
 }
 export function* fetchEditorsPicks() {
   const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=4`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.editorsPicks);
 }
 export function* fetchBornToday() {
   const requestURL = `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US&page=1`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.bornToday);
 }
 export function* fetchTopNews() {
   const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=6`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, homeActions.topNews);
 }
 export function* fetchRecentlyViewed() {
   const requestURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=8`;
+  yield delay(2000);
   yield fetchEntity(request, requestURL, appActions.recentlyViewed);
 }
 

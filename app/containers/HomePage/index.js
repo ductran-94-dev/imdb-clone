@@ -31,18 +31,18 @@ import Wrapper from './Wrapper';
 const key = 'home';
 
 export function HomePage({
-  upcomingMovies,
-  popularMovies,
-  featuredToday,
-  topPicks,
-  watchlist,
-  fanFavourites,
-  moveToWatch,
-  imdbOriginals,
-  editorsPicks,
-  bornToday,
-  topNews,
-  recentlyViewed,
+  asyncUpcomingMovies,
+  asyncPopularMovies,
+  asyncFeaturedToday,
+  asyncTopPicks,
+  asyncWatchlist,
+  asyncFanFavourites,
+  asyncMoveToWatch,
+  asyncImdbOriginals,
+  asyncEditorsPicks,
+  asyncBornToday,
+  asyncTopNews,
+  asyncRecentlyViewed,
   onLoadUpcomingMovies,
   onLoadPopularMovies,
   onLoadFeaturedToday,
@@ -86,121 +86,49 @@ export function HomePage({
       <Container>
         <Wrapper>
           <PageGroup title="Featured today">
-            <PageSection title="">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: featuredToday,
-                }}
-              />
+            <PageSection>
+              <MoviesList {...asyncFeaturedToday} />
             </PageSection>
           </PageGroup>
           <PageGroup title="What to watch">
             <PageSection title="Top picks">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: topPicks,
-                }}
-              />
+              <MoviesList {...asyncTopPicks} />
             </PageSection>
             <PageSection title="From your Watchlist">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: watchlist,
-                }}
-              />
+              <MoviesList {...asyncWatchlist} />
             </PageSection>
             <PageSection title="Fan favourites">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: fanFavourites,
-                }}
-              />
+              <MoviesList {...asyncFanFavourites} />
             </PageSection>
             <PageSection title="More to watch">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: moveToWatch,
-                }}
-              />
+              <MoviesList {...asyncMoveToWatch} />
             </PageSection>
           </PageGroup>
           <PageGroup title="Exclusive videos">
             <PageSection title="IMDb Originals">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: imdbOriginals,
-                }}
-              />
+              <MoviesList {...asyncImdbOriginals} />
             </PageSection>
           </PageGroup>
           <PageGroup title="Explore what’s streaming">
             <PageSection title="">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: upcomingMovies,
-                }}
-              />
+              <MoviesList {...asyncUpcomingMovies} />
             </PageSection>
             <PageSection title="">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: popularMovies,
-                }}
-              />
+              <MoviesList {...asyncPopularMovies} />
             </PageSection>
           </PageGroup>
           <PageGroup title="More to explore">
             <PageSection title="Editors’ picks" seeAllLink="/editors_picks">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: editorsPicks,
-                }}
-              />
+              <MoviesList {...asyncEditorsPicks} />
             </PageSection>
             <PageSection title="Born today">
-              <CastList
-                {...{
-                  loading: false,
-                  error: false,
-                  cast: bornToday,
-                }}
-              />
+              <CastList {...asyncBornToday} />
             </PageSection>
             <PageSection title="Top news">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: topNews,
-                }}
-              />
+              <MoviesList {...asyncTopNews} />
             </PageSection>
             <PageSection title="Recently viewed">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: recentlyViewed,
-                }}
-              />
+              <MoviesList {...asyncRecentlyViewed} />
             </PageSection>
           </PageGroup>
         </Wrapper>
@@ -210,18 +138,18 @@ export function HomePage({
 }
 
 HomePage.propTypes = {
-  popularMovies: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  upcomingMovies: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  featuredToday: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  topPicks: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  watchlist: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  fanFavourites: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  moveToWatch: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  imdbOriginals: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  editorsPicks: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  bornToday: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  topNews: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  recentlyViewed: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  asyncPopularMovies: PropTypes.object,
+  asyncUpcomingMovies: PropTypes.object,
+  asyncFeaturedToday: PropTypes.object,
+  asyncTopPicks: PropTypes.object,
+  asyncWatchlist: PropTypes.object,
+  asyncFanFavourites: PropTypes.object,
+  asyncMoveToWatch: PropTypes.object,
+  asyncImdbOriginals: PropTypes.object,
+  asyncEditorsPicks: PropTypes.object,
+  asyncBornToday: PropTypes.object,
+  asyncTopNews: PropTypes.object,
+  asyncRecentlyViewed: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onLoadUpcomingMovies: PropTypes.func,
   onLoadPopularMovies: PropTypes.func,
   onLoadFeaturedToday: PropTypes.func,
@@ -237,18 +165,18 @@ HomePage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  popularMovies: homeSelectors.makeSelectPopularMovies(),
-  upcomingMovies: homeSelectors.makeSelectUpcomingMovies(),
-  featuredToday: homeSelectors.makeSelectFeaturedToday(),
-  topPicks: homeSelectors.makeSelectTopPicks(),
-  watchlist: homeSelectors.makeSelectWatchlist(),
-  fanFavourites: homeSelectors.makeSelectFanFavourites(),
-  moveToWatch: homeSelectors.makeSelectMoveToWatch(),
-  imdbOriginals: homeSelectors.makeSelectImdbOriginals(),
-  editorsPicks: homeSelectors.makeSelectEditorsPicks(),
-  bornToday: homeSelectors.makeSelectBornToday(),
-  topNews: homeSelectors.makeSelectTopNews(),
-  recentlyViewed: appSelectors.makeSelectRecentlyViewed(),
+  asyncPopularMovies: homeSelectors.makeSelectAsyncPopularMovies(),
+  asyncUpcomingMovies: homeSelectors.makeSelectAsyncUpcomingMovies(),
+  asyncFeaturedToday: homeSelectors.makeSelectAsyncFeaturedToday(),
+  asyncTopPicks: homeSelectors.makeSelectAsyncTopPicks(),
+  asyncWatchlist: homeSelectors.makeSelectAsyncWatchlist(),
+  asyncFanFavourites: homeSelectors.makeSelectAsyncFanFavourites(),
+  asyncMoveToWatch: homeSelectors.makeSelectAsyncMoveToWatch(),
+  asyncImdbOriginals: homeSelectors.makeSelectAsyncImdbOriginals(),
+  asyncEditorsPicks: homeSelectors.makeSelectAsyncEditorsPicks(),
+  asyncBornToday: homeSelectors.makeSelectAsyncBornToday(),
+  asyncTopNews: homeSelectors.makeSelectAsyncTopNews(),
+  asyncRecentlyViewed: appSelectors.makeSelectRecentlyViewed(),
 });
 
 export function mapDispatchToProps(dispatch) {
