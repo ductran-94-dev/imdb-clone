@@ -16,3 +16,11 @@ export function createAction(type, payload = {}) {
     ...payload,
   };
 }
+
+export function createAsyncAction(type) {
+  return {
+    request: request => createAction(type[REQUEST], { request }),
+    success: response => createAction(type[SUCCESS], { response }),
+    failure: response => createAction(type[FAILURE], { response }),
+  };
+}
