@@ -39,12 +39,6 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
-const makeSelectRecentlyViewed = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.recentlyViewed.items,
-  );
-
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -52,5 +46,4 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
-  makeSelectRecentlyViewed,
 };

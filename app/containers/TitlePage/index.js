@@ -43,12 +43,12 @@ export function TitlePage({
   titleId,
   titleDetails,
   titlePhotos,
-  titleVideos,
-  titleCast,
+  asyncTitleVideos,
+  asyncTitleCast,
   titleCrew,
-  titleSimilar,
-  titleReviews,
-  recentlyViewed,
+  asyncTitleSimilar,
+  asyncTitleReviews,
+  asyncRecentlyViewed,
   location,
   onLoadTitleDetails,
   onLoadTitlePhotos,
@@ -115,14 +115,14 @@ export function TitlePage({
             <PageSection>
               <TitleFact
                 titleDetails={titleDetails}
-                titleCast={titleCast}
+                titleCast={[]}
                 titleCrew={titleCrew}
               />
             </PageSection>
           </PageGroup>
           <PageGroup>
             <PageSection title="Videos" seeAllLink="/">
-              <TitleVideos titleVideos={titleVideos} />
+              <TitleVideos {...asyncTitleVideos} />
             </PageSection>
             <PageSection title="Photos" seeAllLink="/">
               <TitlePhotos titlePhotos={titlePhotos} />
@@ -132,21 +132,13 @@ export function TitlePage({
               subtitle="Cast overview, first billed only"
               seeAllLink="/"
             >
-              <TitleCast titleCast={titleCast} />
+              <TitleCast {...asyncTitleCast} />
             </PageSection>
             <PageSection title="More like this" seeAllLink="/">
-              <TitleSimilar
-                loading={false}
-                error={false}
-                titleSimilar={titleSimilar}
-              />
+              <TitleSimilar {...asyncTitleSimilar} />
             </PageSection>
             <PageSection title="User reviews" seeAllLink="/">
-              <TitleReviews
-                loading={false}
-                error={false}
-                titleReviews={titleReviews}
-              />
+              <TitleReviews {...asyncTitleReviews} />
             </PageSection>
           </PageGroup>
           <PageGroup title="More to explore">
@@ -170,13 +162,7 @@ export function TitlePage({
           </PageGroup>
           <PageGroup title="">
             <PageSection title="Recently viewed">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: recentlyViewed,
-                }}
-              />
+              <MoviesList {...asyncRecentlyViewed} />
             </PageSection>
           </PageGroup>
         </Wrapper>
@@ -189,12 +175,12 @@ TitlePage.propTypes = {
   titleId: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   titleDetails: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   titlePhotos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  titleVideos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  titleCast: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  asyncTitleVideos: PropTypes.object,
+  asyncTitleCast: PropTypes.object,
   titleCrew: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  titleSimilar: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  titleReviews: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  recentlyViewed: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  asyncTitleSimilar: PropTypes.object,
+  asyncTitleReviews: PropTypes.object,
+  asyncRecentlyViewed: PropTypes.object,
   location: PropTypes.any,
   onChangeTitleId: PropTypes.func,
   onLoadTitleDetails: PropTypes.func,
@@ -210,12 +196,12 @@ const mapStateToProps = createStructuredSelector({
   titleId: selectors.makeSelectMovieId(),
   titleDetails: selectors.makeSelectMovieDetails(),
   titlePhotos: selectors.makeSelectMoviePhotos(),
-  titleVideos: selectors.makeSelectMovieVideos(),
-  titleCast: selectors.makeSelectMovieCast(),
+  asyncTitleVideos: selectors.makeSelectAsyncMovieVideos(),
+  asyncTitleCast: selectors.makeSelectAsyncMovieCast(),
   titleCrew: selectors.makeSelectMovieCrew(),
-  titleSimilar: selectors.makeSelectMovieSimilar(),
-  titleReviews: selectors.makeSelectMovieReviews(),
-  recentlyViewed: selectors.makeSelectRecentlyViewed(),
+  asyncTitleSimilar: selectors.makeSelectAsyncMovieSimilar(),
+  asyncTitleReviews: selectors.makeSelectAsyncMovieReviews(),
+  asyncRecentlyViewed: selectors.makeSelectAsyncRecentlyViewed(),
   location: selectors.makeSelectLocation(),
 });
 

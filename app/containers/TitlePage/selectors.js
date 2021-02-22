@@ -19,10 +19,10 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
-const makeSelectRecentlyViewed = () =>
+const makeSelectAsyncRecentlyViewed = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.recentlyViewed.items,
+    globalState => globalState.recentlyViewed,
   );
 
 /**
@@ -53,16 +53,16 @@ const makeSelectMoviePhotos = () =>
     titleState => titleState.titlePhotos.items,
   );
 
-const makeSelectMovieVideos = () =>
+const makeSelectAsyncMovieVideos = () =>
   createSelector(
     selectTitlePageDomain,
-    titleState => titleState.titleVideos.items,
+    titleState => titleState.titleVideos,
   );
 
-const makeSelectMovieCast = () =>
+const makeSelectAsyncMovieCast = () =>
   createSelector(
     selectTitlePageDomain,
-    titleState => titleState.titleCast.items,
+    titleState => titleState.titleCast,
   );
 
 const makeSelectMovieCrew = () =>
@@ -71,16 +71,16 @@ const makeSelectMovieCrew = () =>
     titleState => titleState.titleCrew.items,
   );
 
-const makeSelectMovieSimilar = () =>
+const makeSelectAsyncMovieSimilar = () =>
   createSelector(
     selectTitlePageDomain,
-    titleState => titleState.titleSimilar.items,
+    titleState => titleState.titleSimilar,
   );
 
-const makeSelectMovieReviews = () =>
+const makeSelectAsyncMovieReviews = () =>
   createSelector(
     selectTitlePageDomain,
-    titleState => titleState.titleReviews.items,
+    titleState => titleState.titleReviews,
   );
 
 export default makeSelectTitlePage;
@@ -88,11 +88,11 @@ export {
   makeSelectMovieId,
   makeSelectMovieDetails,
   makeSelectMoviePhotos,
-  makeSelectMovieVideos,
-  makeSelectMovieCast,
+  makeSelectAsyncMovieVideos,
+  makeSelectAsyncMovieCast,
   makeSelectMovieCrew,
-  makeSelectMovieSimilar,
-  makeSelectMovieReviews,
+  makeSelectAsyncMovieSimilar,
+  makeSelectAsyncMovieReviews,
   makeSelectLocation,
-  makeSelectRecentlyViewed,
+  makeSelectAsyncRecentlyViewed,
 };

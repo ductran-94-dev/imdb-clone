@@ -11,7 +11,6 @@ export function* fetchMovieDetails() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
 
-  yield delay(2000);
   yield fetchEntity(request, requestURL, titleActions.movieDetails);
 }
 

@@ -13,7 +13,7 @@ import Grid from 'components/Grid';
 
 import Wrapper from './Wrapper';
 
-function TitleReviews({ loading, error, titleReviews }) {
+function TitleReviews({ loading, error, items }) {
   if (loading) {
     return (
       <Wrapper>
@@ -32,11 +32,11 @@ function TitleReviews({ loading, error, titleReviews }) {
     );
   }
 
-  if (!!titleReviews && titleReviews !== false) {
+  if (!!items && items !== false) {
     return (
       <Wrapper>
         <Grid xs={1} sm={2}>
-          {titleReviews.map(item => (
+          {items.map(item => (
             <ReviewItem key={`titleReview-${item.id}`} item={item} />
           ))}
         </Grid>
@@ -50,7 +50,7 @@ function TitleReviews({ loading, error, titleReviews }) {
 TitleReviews.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.any,
-  titleReviews: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
 };
 
 export default TitleReviews;

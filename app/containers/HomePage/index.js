@@ -14,7 +14,6 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 
 import * as appActions from 'containers/App/actions';
-import * as appSelectors from 'containers/App/selectors';
 
 import { Container } from 'react-bootstrap';
 import MoviesList from 'components/MoviesList';
@@ -149,7 +148,7 @@ HomePage.propTypes = {
   asyncEditorsPicks: PropTypes.object,
   asyncBornToday: PropTypes.object,
   asyncTopNews: PropTypes.object,
-  asyncRecentlyViewed: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  asyncRecentlyViewed: PropTypes.object,
   onLoadUpcomingMovies: PropTypes.func,
   onLoadPopularMovies: PropTypes.func,
   onLoadFeaturedToday: PropTypes.func,
@@ -176,7 +175,7 @@ const mapStateToProps = createStructuredSelector({
   asyncEditorsPicks: homeSelectors.makeSelectAsyncEditorsPicks(),
   asyncBornToday: homeSelectors.makeSelectAsyncBornToday(),
   asyncTopNews: homeSelectors.makeSelectAsyncTopNews(),
-  asyncRecentlyViewed: appSelectors.makeSelectRecentlyViewed(),
+  asyncRecentlyViewed: homeSelectors.makeSelectAsyncRecentlyViewed(),
 });
 
 export function mapDispatchToProps(dispatch) {

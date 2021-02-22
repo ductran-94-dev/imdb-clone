@@ -13,7 +13,7 @@ import Grid from 'components/Grid';
 
 import Wrapper from './Wrapper';
 
-function TitleSimilar({ loading, error, titleSimilar }) {
+function TitleSimilar({ loading, error, items }) {
   if (loading) {
     return (
       <Wrapper>
@@ -32,12 +32,12 @@ function TitleSimilar({ loading, error, titleSimilar }) {
     );
   }
 
-  if (!!titleSimilar && titleSimilar !== false) {
+  if (!!items && items !== false) {
     return (
       <Wrapper>
         <Grid xs={2} sm={3} md={4} lg={3} xl={4}>
-          {titleSimilar.map(movie => (
-            <MovieItem key={`titleSimilar-${movie.id}`} movie={movie} />
+          {items.map(movie => (
+            <MovieItem key={`items-${movie.id}`} movie={movie} />
           ))}
         </Grid>
       </Wrapper>
@@ -50,7 +50,7 @@ function TitleSimilar({ loading, error, titleSimilar }) {
 TitleSimilar.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.any,
-  titleSimilar: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
 };
 
 export default TitleSimilar;

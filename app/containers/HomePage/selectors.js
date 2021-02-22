@@ -6,6 +6,20 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
 const selectHome = state => state.home || initialState;
+const selectGlobal = state => state.global || initialState;
+
+/**
+ * Other specific selectors
+ */
+const makeSelectAsyncRecentlyViewed = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.recentlyViewed,
+  );
+
+/**
+ * Default selector used by TitlePage
+ */
 
 const makeSelectUsername = () =>
   createSelector(
@@ -93,4 +107,5 @@ export {
   makeSelectAsyncEditorsPicks,
   makeSelectAsyncBornToday,
   makeSelectAsyncTopNews,
+  makeSelectAsyncRecentlyViewed,
 };

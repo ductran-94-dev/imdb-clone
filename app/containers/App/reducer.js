@@ -8,7 +8,7 @@
  */
 
 import produce from 'immer';
-import { AMOUNT_ROW_ITEMS, SUCCESS } from 'utils/constants';
+import { AMOUNT_ROW_ITEMS, SUCCESS, REQUEST, FAILURE } from 'utils/constants';
 import { RECENTLY_VIEWED } from './actions';
 import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
 
@@ -20,7 +20,11 @@ export const initialState = {
   userData: {
     repositories: false,
   },
-  recentlyViewed: {},
+  recentlyViewed: {
+    loading: false,
+    error: false,
+    items: false,
+  },
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -44,8 +48,18 @@ const appReducer = (state = initialState, action) =>
         draft.loading = false;
         break;
 
+      case RECENTLY_VIEWED[REQUEST]:
+        draft.recentlyViewed.loading = true;
+        break;
+
       case RECENTLY_VIEWED[SUCCESS]:
+        draft.recentlyViewed.loading = false;
         reduceFetchRecentlyViewed(action.response, draft);
+        break;
+
+      case RECENTLY_VIEWED[FAILURE]:
+        draft.recentlyViewed.loading = false;
+        draft.recentlyViewed.error = action.response;
         break;
     }
   });
@@ -53,7 +67,7 @@ const appReducer = (state = initialState, action) =>
 export default appReducer;
 
 function reduceFetchRecentlyViewed(response, draft) {
-  draft.recentlyViewed = {
-    items: response.results.filter((_, idx) => idx < AMOUNT_ROW_ITEMS),
-  };
+  draft.recentlyViewed.items = response.results.filter(
+    (_, idx) => idx < AMOUNT_ROW_ITEMS,
+  );
 }
