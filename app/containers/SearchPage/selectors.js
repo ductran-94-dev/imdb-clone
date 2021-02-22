@@ -39,10 +39,10 @@ const makeSelectSearchKeywords = () =>
     substate => substate.searchKeywords.items,
   );
 
-const makeSelectSearchMovies = () =>
+const makeSelectAsyncSearchMovies = () =>
   createSelector(
     selectSearchPageDomain,
-    substate => substate.searchMovies.items,
+    substate => substate.searchMovies,
   );
 
 const makeSelectSearchPeople = () =>
@@ -61,7 +61,7 @@ export default makeSelectSearchPage;
 export {
   makeSelectKeyword,
   makeSelectSearchKeywords,
-  makeSelectSearchMovies,
+  makeSelectAsyncSearchMovies,
   makeSelectSearchPeople,
   makeSelectSearchTvShows,
   makeSelectLocation,

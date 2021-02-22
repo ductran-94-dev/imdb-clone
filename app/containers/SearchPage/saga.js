@@ -1,5 +1,5 @@
 import { API_KEY } from 'containers/App/constants';
-import { all, takeLatest, select } from 'redux-saga/effects';
+import { all, takeLatest, select, delay } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
 import request from 'utils/request';
 import { fetchEntity } from 'utils/sagaCreator';
@@ -10,6 +10,7 @@ export function* searchKeywords() {
   const keyword = yield select(makeSelectKeyword());
   const requestURL = `https://api.themoviedb.org/3/search/keyword?query=${keyword}&api_key=${API_KEY}&language=en-US`;
 
+  yield delay(2000);
   yield fetchEntity(request, requestURL, searchActions.searchKeywords);
 }
 
@@ -17,6 +18,7 @@ export function* searchMovies() {
   const keyword = yield select(makeSelectKeyword());
   const requestURL = `https://api.themoviedb.org/3/search/movie?query=${keyword}&api_key=${API_KEY}&language=en-US&page=1`;
 
+  yield delay(2000);
   yield fetchEntity(request, requestURL, searchActions.searchMovies);
 }
 
@@ -24,6 +26,7 @@ export function* searchPeople() {
   const keyword = yield select(makeSelectKeyword());
   const requestURL = `https://api.themoviedb.org/3/search/person?query=${keyword}&api_key=${API_KEY}&language=en-US&page=1`;
 
+  yield delay(2000);
   yield fetchEntity(request, requestURL, searchActions.searchPeople);
 }
 
@@ -31,6 +34,7 @@ export function* searchTvShows() {
   const keyword = yield select(makeSelectKeyword());
   const requestURL = `https://api.themoviedb.org/3/search/tv?query=${keyword}&api_key=${API_KEY}&language=en-US&page=1`;
 
+  yield delay(2000);
   yield fetchEntity(request, requestURL, searchActions.searchTvShows);
 }
 

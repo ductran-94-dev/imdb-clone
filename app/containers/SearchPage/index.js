@@ -29,7 +29,7 @@ import saga from './saga';
 export function SearchPage({
   location,
   // searchKeywords,
-  searchMovies,
+  asyncSearchMovies,
   // searchPeople,
   // searchTvShows,
   onChangeKeyword,
@@ -61,13 +61,7 @@ export function SearchPage({
         <Wrapper>
           <PageGroup title="">
             <PageSection title="Movies">
-              <MoviesList
-                {...{
-                  loading: false,
-                  error: false,
-                  movies: searchMovies,
-                }}
-              />
+              <MoviesList {...asyncSearchMovies} />
             </PageSection>
           </PageGroup>
         </Wrapper>
@@ -79,7 +73,7 @@ export function SearchPage({
 SearchPage.propTypes = {
   location: PropTypes.object,
   // searchKeywords: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  searchMovies: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  asyncSearchMovies: PropTypes.object,
   // searchPeople: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   // searchTvShows: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onChangeKeyword: PropTypes.func,
@@ -91,7 +85,7 @@ SearchPage.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   // searchKeywords: selectors.makeSelectSearchKeywords(),
-  searchMovies: selectors.makeSelectSearchMovies(),
+  asyncSearchMovies: selectors.makeSelectAsyncSearchMovies(),
   // searchPeople: selectors.makeSelectSearchPeople(),
   // searchTvShows: selectors.makeSelectSearchTvShows(),
   location: selectors.makeSelectLocation(),
