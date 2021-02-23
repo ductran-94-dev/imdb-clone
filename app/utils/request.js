@@ -1,3 +1,7 @@
+/* eslint-disable no-debugger */
+/* eslint-disable prettier/prettier */
+import API from './api';
+
 /**
  * Parses the JSON returned by a network request
  *
@@ -9,7 +13,7 @@ function parseJSON(response) {
   if (response.status === 204 || response.status === 205) {
     return null;
   }
-  return response.json();
+  return response.data;
 }
 
 /**
@@ -37,8 +41,12 @@ function checkStatus(response) {
  *
  * @return {object}           The response data
  */
-export default function request(url, options) {
-  return fetch(url, options)
+export default function request(method = 'get', url, options) {
+  return API({
+    method,
+    url,
+    data: options,
+  })
     .then(checkStatus)
     .then(parseJSON);
 }

@@ -14,6 +14,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 
 import * as appActions from 'containers/App/actions';
+import ImgMask from 'images/mask.png';
 
 import { Container } from 'react-bootstrap';
 import MoviesList from 'components/MoviesList';
@@ -82,6 +83,9 @@ export function HomePage({
           content="A React.js Boilerplate application homepage"
         />
       </Helmet>
+      <div hidden>
+        <img src={ImgMask} alt="mask" />
+      </div>
       <Container>
         <Wrapper>
           <PageGroup title="Featured today">
