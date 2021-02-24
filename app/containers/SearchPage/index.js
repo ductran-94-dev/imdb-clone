@@ -24,6 +24,7 @@ import CastList from 'components/CastList';
 
 import Wrapper from './Wrapper';
 import KeywordList from './KeywordList';
+import TvShowList from './TvShowList';
 
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -71,7 +72,7 @@ export function SearchPage({
               <MoviesList {...asyncSearchMovies} />
             </PageSection>
             <PageSection title="TV Shows">
-              <MoviesList {...asyncSearchTvShows} />
+              <TvShowList {...asyncSearchTvShows} />
             </PageSection>
             <PageSection title="People">
               <CastList {...asyncSearchPeople} />
