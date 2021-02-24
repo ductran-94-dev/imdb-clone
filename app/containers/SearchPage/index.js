@@ -16,10 +16,14 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { getSearchParam } from 'services/url';
 
 import Container from 'react-bootstrap/Container';
+
 import MoviesList from 'components/MoviesList';
 import PageGroup from 'components/PageGroup';
 import PageSection from 'components/PageSection';
+import CastList from 'components/CastList';
+
 import Wrapper from './Wrapper';
+import KeywordList from './KeywordList';
 
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -28,10 +32,10 @@ import saga from './saga';
 
 export function SearchPage({
   location,
-  // searchKeywords,
+  asyncSearchKeywords,
   asyncSearchMovies,
-  // searchPeople,
-  // searchTvShows,
+  asyncSearchPeople,
+  asyncSearchTvShows,
   onChangeKeyword,
   onLoadSearchKeywords,
   onLoadSearchMovies,
@@ -60,8 +64,17 @@ export function SearchPage({
       <Container>
         <Wrapper>
           <PageGroup title="">
+            <PageSection title="Keywords">
+              <KeywordList {...asyncSearchKeywords} />
+            </PageSection>
             <PageSection title="Movies">
               <MoviesList {...asyncSearchMovies} />
+            </PageSection>
+            <PageSection title="TV Shows">
+              <MoviesList {...asyncSearchTvShows} />
+            </PageSection>
+            <PageSection title="People">
+              <CastList {...asyncSearchPeople} />
             </PageSection>
           </PageGroup>
         </Wrapper>
@@ -72,10 +85,10 @@ export function SearchPage({
 
 SearchPage.propTypes = {
   location: PropTypes.object,
-  // searchKeywords: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  asyncSearchKeywords: PropTypes.object,
   asyncSearchMovies: PropTypes.object,
-  // searchPeople: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  // searchTvShows: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  asyncSearchPeople: PropTypes.object,
+  asyncSearchTvShows: PropTypes.object,
   onChangeKeyword: PropTypes.func,
   onLoadSearchKeywords: PropTypes.func,
   onLoadSearchMovies: PropTypes.func,
@@ -84,10 +97,10 @@ SearchPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  // searchKeywords: selectors.makeSelectSearchKeywords(),
+  asyncSearchKeywords: selectors.makeSelectAsyncSearchKeywords(),
   asyncSearchMovies: selectors.makeSelectAsyncSearchMovies(),
-  // searchPeople: selectors.makeSelectSearchPeople(),
-  // searchTvShows: selectors.makeSelectSearchTvShows(),
+  asyncSearchPeople: selectors.makeSelectAsyncSearchPeople(),
+  asyncSearchTvShows: selectors.makeSelectAsyncSearchTvShows(),
   location: selectors.makeSelectLocation(),
 });
 

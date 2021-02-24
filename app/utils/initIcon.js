@@ -14,6 +14,7 @@ import {
   faBookmark,
   faCaretDown,
   faPlus,
+  faTags,
 } from '@fortawesome/free-solid-svg-icons';
 // import { far } from '@fortawesome/free-regular-svg-icons';
 
@@ -35,6 +36,7 @@ export default {
       faBookmark,
       faCaretDown,
       faPlus,
+      faTags,
     );
   },
 };

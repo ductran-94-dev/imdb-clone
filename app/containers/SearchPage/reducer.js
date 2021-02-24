@@ -106,7 +106,7 @@ const searchPageReducer = (state = initialState, action) =>
 export default searchPageReducer;
 
 function reduceSearchKeywords(response, draft) {
-  draft.searchKeywords.items = response.results.filter((_, idx) => idx < 12);
+  draft.searchKeywords.items = response.results.filter((_, idx) => idx < 8);
 }
 
 function reduceSearchMovies(response, draft) {
@@ -114,7 +114,7 @@ function reduceSearchMovies(response, draft) {
 }
 
 function reduceSearchPeople(response, draft) {
-  draft.searchPeople.items = response.results.filter((_, idx) => idx < 12);
+  draft.searchPeople.items = response.results.filter((_, idx) => idx < 8);
 }
 
 function reduceSearchTvShows(response, draft) {

@@ -1,17 +1,17 @@
 /**
  *
- * MoviesList
+ * KeywordList
  *
  */
 
-import LoadingIndicator from 'components/LoadingIndicator';
-import CastItem from 'components/CastItem';
-import PropTypes from 'prop-types';
 import React from 'react';
-import Ul from './Ul';
+import PropTypes from 'prop-types';
+import LoadingIndicator from 'components/LoadingIndicator';
+import KeywordItem from 'components/KeywordItem';
+import Grid from './Grid';
 import Wrapper from './Wrapper';
 
-function CastList({ loading, error, items }) {
+function KeywordList({ loading, error, items }) {
   if (loading) {
     return (
       <Wrapper>
@@ -33,11 +33,11 @@ function CastList({ loading, error, items }) {
   if (!!items && items !== false) {
     return (
       <Wrapper>
-        <Ul>
+        <Grid>
           {items.map(item => (
-            <CastItem key={`item-${item.id}`} item={item} />
+            <KeywordItem key={`keyword-${item.id}`} item={item} />
           ))}
-        </Ul>
+        </Grid>
       </Wrapper>
     );
   }
@@ -45,10 +45,10 @@ function CastList({ loading, error, items }) {
   return null;
 }
 
-CastList.propTypes = {
+KeywordList.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.any,
   items: PropTypes.any,
 };
 
-export default CastList;
+export default KeywordList;
