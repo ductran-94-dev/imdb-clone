@@ -8,7 +8,7 @@ import {
   createAction,
   createAsyncAction,
   createRequestTypes,
-} from 'utils/actionCreator';
+} from 'utils/reduxHelpers';
 
 export const CHANGE_KEYWORD = 'CHANGE_KEYWORD';
 export const changeKeyword = keyword =>

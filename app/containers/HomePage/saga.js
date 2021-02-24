@@ -5,59 +5,119 @@
 import { all, takeLatest } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
 import request from 'utils/request';
-import { fetchEntity } from 'utils/sagaCreator';
+import { createAsyncActionCreator } from 'utils/reduxHelpers';
 import * as appActions from 'containers/App/actions';
 import * as homeActions from './actions';
 
 export function* fetchUpcomingMovies() {
   const requestURL = `/movie/upcoming?page=1`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.upcomingMovies);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.upcomingMovies,
+  );
 }
 
 export function* fetchPopularMovies() {
   const requestURL = `/movie/popular?page=1`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.popularMovies);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.popularMovies,
+  );
 }
 
 export function* fetchFeaturedToday() {
   const requestURL = `/movie/popular?page=2`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.featuredToday);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.featuredToday,
+  );
 }
 export function* fetchTopPicks() {
   const requestURL = `/movie/popular?page=3`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.topPicks);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.topPicks,
+  );
 }
 export function* fetchWatchlist() {
   const requestURL = `/movie/popular?page=4`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.watchlist);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.watchlist,
+  );
 }
 export function* fetchFanFavourites() {
   const requestURL = `/movie/top_rated?page=1`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.fanFavourites);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.fanFavourites,
+  );
 }
 export function* fetchMoveToWatch() {
   const requestURL = `/movie/top_rated?page=2`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.moveToWatch);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.moveToWatch,
+  );
 }
 export function* fetchImdbOriginals() {
   const requestURL = `/movie/top_rated?page=3`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.imdbOriginals);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.imdbOriginals,
+  );
 }
 export function* fetchEditorsPicks() {
   const requestURL = `/movie/top_rated?page=4`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.editorsPicks);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.editorsPicks,
+  );
 }
 export function* fetchBornToday() {
   const requestURL = `/person/popular?page=1`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.bornToday);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.bornToday,
+  );
 }
 export function* fetchTopNews() {
   const requestURL = `/movie/top_rated?page=6`;
-  yield fetchEntity(request, 'get', requestURL, homeActions.topNews);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    homeActions.topNews,
+  );
 }
 export function* fetchRecentlyViewed() {
   const requestURL = `/movie/top_rated?page=8`;
-  yield fetchEntity(request, 'get', requestURL, appActions.recentlyViewed);
+  yield createAsyncActionCreator(
+    request,
+    'get',
+    requestURL,
+    appActions.recentlyViewed,
+  );
 }
 
 /** *************************************************************************** */

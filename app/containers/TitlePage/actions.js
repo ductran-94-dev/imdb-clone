@@ -7,7 +7,7 @@ import {
   createAction,
   createAsyncAction,
   createRequestTypes,
-} from 'utils/actionCreator';
+} from 'utils/reduxHelpers';
 
 export const CHANGE_TITLE_ID = 'CHANGE_TITLE_ID';
 export const changeTitleId = titleId =>

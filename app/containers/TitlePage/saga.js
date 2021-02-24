@@ -1,7 +1,7 @@
 import { all, takeLatest, select, delay } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
 import request from 'utils/request';
-import { fetchEntity } from 'utils/sagaCreator';
+import { createAsyncActionCreator } from 'utils/reduxHelpers';
 import * as appActions from 'containers/App/actions';
 import * as titleActions from './actions';
 import { makeSelectMovieId } from './selectors';
@@ -10,48 +10,48 @@ export function* fetchMovieDetails() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}?`;
 
-  yield fetchEntity(request, 'get', requestURL, titleActions.movieDetails);
+  yield createAsyncActionCreator(request, 'get', requestURL, titleActions.movieDetails);
 }
 
 export function* fetchMoviePhotos() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/images?page=1`;
 
-  yield fetchEntity(request, 'get', requestURL, titleActions.moviePhotos);
+  yield createAsyncActionCreator(request, 'get', requestURL, titleActions.moviePhotos);
 }
 
 export function* fetchMovieVideos() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/videos?page=1`;
 
-  yield fetchEntity(request, 'get', requestURL, titleActions.movieVideos);
+  yield createAsyncActionCreator(request, 'get', requestURL, titleActions.movieVideos);
 }
 
 export function* fetchMovieCast() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/credits?&page=1`;
 
-  yield fetchEntity(request, 'get', requestURL, titleActions.movieCast);
+  yield createAsyncActionCreator(request, 'get', requestURL, titleActions.movieCast);
 }
 
 export function* fetchMovieSimilar() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/recommendations?&page=1`;
 
-  yield fetchEntity(request, 'get', requestURL, titleActions.movieSimilar);
+  yield createAsyncActionCreator(request, 'get', requestURL, titleActions.movieSimilar);
 }
 
 export function* fetchMovieReviews() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/reviews?&page=1`;
 
-  yield fetchEntity(request, 'get', requestURL, titleActions.movieReviews);
+  yield createAsyncActionCreator(request, 'get', requestURL, titleActions.movieReviews);
 }
 
 export function* fetchRecentlyViewed() {
   const requestURL = `/movie/top_rated?&page=7`;
 
-  yield fetchEntity(request, 'get', requestURL, appActions.recentlyViewed);
+  yield createAsyncActionCreator(request, 'get', requestURL, appActions.recentlyViewed);
 }
 
 /** *************************************************************************** */

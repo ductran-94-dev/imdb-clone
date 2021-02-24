@@ -19,7 +19,7 @@ import {
   createAction,
   createAsyncAction,
   createRequestTypes,
-} from 'utils/actionCreator';
+} from 'utils/reduxHelpers';
 import { CHANGE_USERNAME } from './constants';
 
 export const changeUsername = username =>

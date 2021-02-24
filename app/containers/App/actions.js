@@ -15,7 +15,7 @@
  *    }
  */
 
-import { createAction, createRequestTypes } from 'utils/actionCreator';
+import { createAction, createRequestTypes } from 'utils/reduxHelpers';
 import { FAILURE, REQUEST, SUCCESS } from 'utils/constants';
 import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
 
