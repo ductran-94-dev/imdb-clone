@@ -2,7 +2,7 @@
  * Gets the repositories of the user from Github
  */
 
-import { all, takeLatest, delay } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
 import request from 'utils/request';
 import { fetchEntity } from 'utils/sagaCreator';
@@ -21,52 +21,42 @@ export function* fetchPopularMovies() {
 
 export function* fetchFeaturedToday() {
   const requestURL = `/movie/popular?page=2`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.featuredToday);
 }
 export function* fetchTopPicks() {
   const requestURL = `/movie/popular?page=3`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.topPicks);
 }
 export function* fetchWatchlist() {
   const requestURL = `/movie/popular?page=4`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.watchlist);
 }
 export function* fetchFanFavourites() {
   const requestURL = `/movie/top_rated?page=1`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.fanFavourites);
 }
 export function* fetchMoveToWatch() {
   const requestURL = `/movie/top_rated?page=2`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.moveToWatch);
 }
 export function* fetchImdbOriginals() {
   const requestURL = `/movie/top_rated?page=3`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.imdbOriginals);
 }
 export function* fetchEditorsPicks() {
   const requestURL = `/movie/top_rated?page=4`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.editorsPicks);
 }
 export function* fetchBornToday() {
   const requestURL = `/person/popular?page=1`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.bornToday);
 }
 export function* fetchTopNews() {
   const requestURL = `/movie/top_rated?page=6`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, homeActions.topNews);
 }
 export function* fetchRecentlyViewed() {
   const requestURL = `/movie/top_rated?page=8`;
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, appActions.recentlyViewed);
 }
 

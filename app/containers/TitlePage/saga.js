@@ -17,7 +17,6 @@ export function* fetchMoviePhotos() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/images?page=1`;
 
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, titleActions.moviePhotos);
 }
 
@@ -25,7 +24,6 @@ export function* fetchMovieVideos() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/videos?page=1`;
 
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, titleActions.movieVideos);
 }
 
@@ -33,7 +31,6 @@ export function* fetchMovieCast() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/credits?&page=1`;
 
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, titleActions.movieCast);
 }
 
@@ -41,7 +38,6 @@ export function* fetchMovieSimilar() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/recommendations?&page=1`;
 
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, titleActions.movieSimilar);
 }
 
@@ -49,14 +45,12 @@ export function* fetchMovieReviews() {
   const movieId = yield select(makeSelectMovieId());
   const requestURL = `/movie/${movieId}/reviews?&page=1`;
 
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, titleActions.movieReviews);
 }
 
 export function* fetchRecentlyViewed() {
   const requestURL = `/movie/top_rated?&page=7`;
 
-  yield delay(2000);
   yield fetchEntity(request, 'get', requestURL, appActions.recentlyViewed);
 }
 
